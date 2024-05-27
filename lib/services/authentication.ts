@@ -64,3 +64,20 @@ export const signupWithEmailAndPassword = async (
   const user = res.user;
   return user;
 };
+
+export const getCustomToken = async (token: string) => {
+  try {
+    const res = await axios.get(
+      "http://localhost:8000/api/v1/users/custom-token",
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res.data.token;
+  } catch (error) {
+    throw error;
+  }
+};

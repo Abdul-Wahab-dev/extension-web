@@ -11,7 +11,6 @@ const Login = () => {
     (state) => state.loginWithemailAndPasswrd
   );
   const user = useAuthentication((state) => state.user);
-  console.log(user, "login page");
   const router = useRouter();
   const handleLogin = async () => {
     await loginWithemailAndPasswrd(email, password);

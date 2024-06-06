@@ -1,40 +1,22 @@
-"use client";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useAuthentication } from "@/store/auth";
-import { useEffect } from "react";
-import { auth } from "@/app/firebase/config";
-import { getCustomToken } from "@/lib/services/authentication";
+import { redirect } from "next/navigation";
+import { auth } from "@/lib/helper/auth";
+import { headers } from "next/headers";
 export default function RootLayout({
   children,
+  options,
 }: Readonly<{
   children: React.ReactNode;
+  options: any;
 }>) {
-  const router = useRouter();
-  const setCurrentUser = useAuthentication((state) => state.setCurrentUser);
-  const params = useSearchParams();
-
-  useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      if (user && user.uid) {
-        const tempObj = {
-          name: user.displayName!,
-          email: user.email!,
-          uid: user.uid,
-          image: user.photoURL ?? "",
-          providerId: user.providerData[0].providerId,
-        };
-        if (params.get("via_extension")) {
-          const token = await user.getIdToken();
-          const customToken = await getCustomToken(token);
-
-          router.replace(`/?custom_token=${customToken}`);
-        } else {
-          router.replace("/");
-          setCurrentUser(tempObj);
-        }
-      }
-    });
-  }, []);
-
+  headers().forEach((el) => console.log(el));
+  const webUrl = headers().get("x-search-params");
+  if (auth.isAuthenticated()) {
+    if (webUrl && webUrl.includes("via_extension")) {
+      const token = auth.verifyToken();
+      redirect(`/?idToken=${token}`);
+    } else {
+      redirect("/");
+    }
+  }
   return <>{children}</>;
 }

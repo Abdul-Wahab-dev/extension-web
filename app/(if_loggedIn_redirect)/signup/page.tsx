@@ -4,18 +4,20 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthentication } from "@/store/auth";
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [name, setName] = useState<string>("");
 
   const signUpWithEmail = useAuthentication((state) => state.signUpWithEmail);
   const loginWithGoogle = useAuthentication((state) => state.googleLogin);
   const router = useRouter();
   const handleSignUp = async () => {
     try {
-      await signUpWithEmail(email, password);
+      await signUpWithEmail(email, password, name);
 
       setEmail("");
       setPassword("");
+      setName("");
     } catch (e) {
       console.error(e);
     }
@@ -37,6 +39,13 @@ const SignUp = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500"
+        />
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500"
         />
         <input

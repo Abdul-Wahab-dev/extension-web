@@ -18,7 +18,11 @@ interface AuthStoreType {
   signOut: () => Promise<void>;
   setCurrentUser: (authUser: { [keys: string]: string }) => void;
   loginWithemailAndPasswrd: (email: string, password: string) => Promise<void>;
-  signUpWithEmail: (email: string, password: string) => Promise<void>;
+  signUpWithEmail: (
+    email: string,
+    password: string,
+    name: string
+  ) => Promise<void>;
 }
 
 export const useAuthentication = create<AuthStoreType>((set) => ({
@@ -62,9 +66,9 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
       console.log(error.message, "inside the catch block authStore");
     }
   },
-  signUpWithEmail: async (email: string, password: string) => {
+  signUpWithEmail: async (email: string, password: string, name: string) => {
     try {
-      const user = await signupWithEmailAndPassword(email, password);
+      const user = await signupWithEmailAndPassword(email, password, name);
     } catch (error) {
       set({ error: error });
     }

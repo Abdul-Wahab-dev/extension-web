@@ -51,18 +51,63 @@ export const logout = async () => {
 
 // login with email
 export const loginWithEmail = async (email: string, password: string) => {
-  const res = await signInWithEmailAndPassword(auth, email, password);
-  const user = res.user;
-  return user;
+  try {
+    const res = await fetch("http://localhost:8000/api/v1/users/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      console.log(error);
+      throw new Error(error.message);
+    }
+    const parsedResult = await res.json();
+    console.log(parsedResult);
+
+    return parsedResult;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const signupWithEmailAndPassword = async (
   email: string,
-  password: string
+  password: string,
+  name: string
 ) => {
-  const res = await createUserWithEmailAndPassword(auth, email, password);
-  const user = res.user;
-  return user;
+  try {
+    const res = await fetch("http://localhost:8000/api/v1/users/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password: password,
+        name,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      console.log(error);
+      throw new Error(error.message);
+    }
+    const parsedResult = await res.json();
+    console.log(parsedResult);
+
+    return parsedResult;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getCustomToken = async (token: string) => {

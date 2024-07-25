@@ -51,7 +51,9 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
   },
   loginWithemailAndPasswrd: async (email, password) => {
     try {
+      set({ error: null });
       const authUser = await loginWithEmail(email, password);
+      console.log({ authUser });
       if (authUser && authUser.uid) {
         const tempObj = {
           name: authUser.displayName,
@@ -62,8 +64,8 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
         };
         set({ user: tempObj, isAuthenticated: true });
       }
-    } catch (error) {
-      console.log(error.message, "inside the catch block authStore");
+    } catch (error: any) {
+      set({ error: error });
     }
   },
   signUpWithEmail: async (email: string, password: string, name: string) => {

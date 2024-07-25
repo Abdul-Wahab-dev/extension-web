@@ -6,14 +6,23 @@ import { useAuthentication } from "@/store/auth";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const googleLogin = useAuthentication((state) => state.googleLogin);
   const loginWithemailAndPasswrd = useAuthentication(
     (state) => state.loginWithemailAndPasswrd
   );
-  const user = useAuthentication((state) => state.user);
+  const errors = useAuthentication((state) => state.error);
   const router = useRouter();
   const handleLogin = async () => {
-    await loginWithemailAndPasswrd(email, password);
+    setLoading(true);
+    try {
+      await loginWithemailAndPasswrd(email, password);
+      router.replace("/");
+    } catch (error) {
+      setLoading(false);
+    }
+    setLoading(false);
   };
 
   const handleGoogleSignIn = async () => {
@@ -26,27 +35,38 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-cultured">
       <div className="bg-white p-10 rounded-lg shadow-xl w-96">
+        {errors && errors.message && (
+          <div className="border border-red-300 rounded-lg  bg-red-50 dark:text-red-400 p-2 text-red-800 mb-2">
+            {errors && errors.message}
+          </div>
+        )}
+
         <h1 className="text-black text-2xl mb-5 text-center">Login</h1>
         <div className="flex flex-col gap-3">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 mb-4 bg-cultured rounded outline-none text-gray-500 placeholder-gray-500"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 mb-4 bg-cultured rounded outline-none text-gray-500 placeholder-gray-500"
-          />
+          <div className="flex-1 relative">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-3 mb-4 bg-cultured rounded outline-none text-gray-500 placeholder-gray-500"
+            />
+          </div>
+          <div className="flex-1 relative">
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 mb-4 bg-cultured rounded outline-none text-gray-500 placeholder-gray-500"
+            />
+          </div>
           <button
             onClick={handleLogin}
-            className="w-full p-3 bg-primary rounded text-white "
+            className="w-full p-3 bg-primary rounded text-white flex items-center justify-center gap-2"
           >
-            Login
+            <span>Login</span>
+            {loading ? <div className="spinner" id="spinner"></div> : null}
           </button>
           <div className="flex items-center gap-3 my-3">
             <div className="h-[1px] sm:w-[166px] w-[130px] bg-gray-300"></div>

@@ -7,6 +7,7 @@
 // } from "firebase/auth";
 // import { auth } from "@/app/firebase/config";
 import axios from "axios";
+import AppError from "@/utils/appError";
 
 // signin with google
 export const loginWithGoogle = async () => {
@@ -65,15 +66,19 @@ export const loginWithEmail = async (email: string, password: string) => {
     });
 
     if (!res.ok) {
-      const error = await res.json();
-      console.log(error);
-      throw new Error(error.message);
+      const response = await res.json();
+      const statusCode = response.status || 400;
+      const message =
+        response.message && response.message.length
+          ? response.message
+          : response;
+      console.log({ response });
+      throw new AppError(message, statusCode, response.validation ?? null);
     }
     const parsedResult = await res.json();
-    console.log(parsedResult);
-
     return parsedResult;
   } catch (error) {
+    console.log(error, "errir in authentication");
     throw error;
   }
 };

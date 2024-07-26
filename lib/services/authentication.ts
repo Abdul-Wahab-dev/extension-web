@@ -1,25 +1,26 @@
-import {
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "@/app/firebase/config";
+// import {
+//   signInWithEmailAndPassword,
+//   GoogleAuthProvider,
+//   signInWithPopup,
+//   signOut,
+//   createUserWithEmailAndPassword,
+// } from "firebase/auth";
+// import { auth } from "@/app/firebase/config";
 import axios from "axios";
+import AppError from "@/utils/appError";
 
 // signin with google
 export const loginWithGoogle = async () => {
-  const provider = new GoogleAuthProvider();
+  // const provider = new GoogleAuthProvider();
   try {
-    provider.setCustomParameters({
-      prompt: "select_account ",
-    });
-    const userCred = await signInWithPopup(auth, provider);
-    const user = userCred.user;
-    const idToken = await user.getIdToken();
+    // provider.setCustomParameters({
+    //   prompt: "select_account ",
+    // });
+    // const userCred = await signInWithPopup(auth, provider);
+    // const user = userCred.user;
+    // const idToken = await user.getIdToken();
 
-    console.log({ user }, "user{}");
+    // console.log({ user }, "user{}");
     // Send user data to your backend with ID token
     // const res = await axios.post(
     //   "http://localhost:8000/api/v1/users/login",
@@ -36,7 +37,7 @@ export const loginWithGoogle = async () => {
     // );
 
     // console.log({ res }, "{res}");
-    return user;
+    return true;
   } catch (err) {
     console.log(err, "{error}");
     return err;
@@ -46,7 +47,7 @@ export const loginWithGoogle = async () => {
 // signout
 
 export const logout = async () => {
-  await signOut(auth);
+  // await signOut(auth);
 };
 
 // login with email
@@ -65,15 +66,19 @@ export const loginWithEmail = async (email: string, password: string) => {
     });
 
     if (!res.ok) {
-      const error = await res.json();
-      console.log(error);
-      throw new Error(error.message);
+      const response = await res.json();
+      const statusCode = response.status || 400;
+      const message =
+        response.message && response.message.length
+          ? response.message
+          : response;
+      console.log({ response });
+      throw new AppError(message, statusCode, response.validation ?? null);
     }
     const parsedResult = await res.json();
-    console.log(parsedResult);
-
     return parsedResult;
   } catch (error) {
+    console.log(error, "errir in authentication");
     throw error;
   }
 };

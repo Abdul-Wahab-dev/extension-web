@@ -15,8 +15,10 @@ export default function RootLayout({
       const token = auth.verifyToken();
       redirect(`/?idToken=${token}`);
     } else {
+      console.log("redirect");
       redirect("/");
     }
   }
+  console.log("hello");
   return <>{children}</>;
 }

@@ -22,7 +22,7 @@ interface AuthStoreType {
     email: string,
     password: string,
     name: string
-  ) => Promise<void>;
+  ) => Promise<boolean>;
 }
 
 export const useAuthentication = create<AuthStoreType>((set) => ({
@@ -68,11 +68,21 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
       set({ error: error });
     }
   },
-  signUpWithEmail: async (email: string, password: string, name: string) => {
+  signUpWithEmail: async (
+    email: string,
+    password: string,
+    name: string
+  ): Promise<boolean> => {
     try {
+      set({ error: null });
       const user = await signupWithEmailAndPassword(email, password, name);
-    } catch (error) {
+      if (user) {
+        return true;
+      }
+      return false;
+    } catch (error: any) {
       set({ error: error });
+      return false;
     }
   },
 }));

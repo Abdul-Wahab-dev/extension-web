@@ -14,7 +14,7 @@ interface AuthStoreType {
   error: {
     [keys: string]: string;
   } | null;
-  googleLogin: () => Promise<void>;
+  googleLogin: () => Promise<any>;
   signOut: () => Promise<void>;
   setCurrentUser: (authUser: { [keys: string]: string }) => void;
   loginWithemailAndPasswrd: (email: string, password: string) => Promise<void>;
@@ -30,16 +30,12 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
   user: null,
   error: null,
   googleLogin: async () => {
-    const authUser = await loginWithGoogle();
-    if (authUser && authUser.uid) {
-      const tempObj = {
-        name: authUser.displayName,
-        email: authUser.email,
-        uid: authUser.uid,
-        image: authUser.photoURL ?? "",
-        providerId: authUser.providerData[0].providerId,
-      };
-      set({ user: tempObj, isAuthenticated: true });
+    try {
+      set({ error: null });
+      const res = await loginWithGoogle();
+      return res;
+    } catch (error: any) {
+      set({ error: error });
     }
   },
   signOut: async () => {
@@ -49,6 +45,7 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
   setCurrentUser: (authUser) => {
     set({ user: authUser });
   },
+
   loginWithemailAndPasswrd: async (email, password) => {
     try {
       set({ error: null });

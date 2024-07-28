@@ -11,7 +11,7 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
 
   const signUpWithEmail = useAuthentication((state) => state.signUpWithEmail);
-  const loginWithGoogle = useAuthentication((state) => state.googleLogin);
+  const googleLogin = useAuthentication((state) => state.googleLogin);
   const errors = useAuthentication((state) => state.error);
   const router = useRouter();
   const handleSignUp = async () => {
@@ -34,9 +34,15 @@ const SignUp = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      await loginWithGoogle();
+      const res = await googleLogin();
+      if (res) {
+        const a = document.createElement("a");
+        a.href = res.url;
+        a.target = "_self";
+        a.click();
+      }
     } catch (error) {
-      console.error(error);
+      toast.error("Failed to process you request");
     }
   };
   return (
@@ -90,7 +96,7 @@ const SignUp = () => {
             <div className="h-[1px] sm:w-[166px] w-[130px] bg-gray-300"></div>
           </div>
           <button
-            onClick={handleSignUp}
+            onClick={handleGoogleSignIn}
             type="button"
             className="text-gray-500  border flex gap-2  border-gray-500 m-auto  rounded px-5 py-2.5 text-center justify-center items-center w-full"
           >

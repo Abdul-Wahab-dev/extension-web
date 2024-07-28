@@ -4,16 +4,16 @@ import chrome from "@/assets/common/chrome.svg";
 
 const Hero = () => {
   return (
-    <div>
-      <div className="container">
-        <div className="flex mb-40 md:flex-col md:mb-20">
+    <div className="md:p-20 p-10 shadow-lg">
+      <div className="custom_container mx-auto">
+        <div className="flex flex-col mb-20 md:flex-row md:mb-0">
           <div className="flex flex-col m-auto flex-1 p-20 md:p-8">
-            <h1 className="text-6xl text-white font-normal mb-4 sm:text-5xl">
+            <h1 className="text-6xl text-[#454647] font-normal mb-4 sm:text-5xl">
               <strong className="text-primary font-normal">Chat</strong> with
               websites <br /> like a{" "}
               <strong className="text-primary font-normal">pro</strong>
             </h1>
-            <p className="text-white text-xl mb-12 sm:text-lg">
+            <p className="text-[#454647] text-xl mb-12 sm:text-lg">
               SitePro revolutionizes your web browsing experience by allowing
               you to integrate AI chatbot technology directly into any website.{" "}
             </p>

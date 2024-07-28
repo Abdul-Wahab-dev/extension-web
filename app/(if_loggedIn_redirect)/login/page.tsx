@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 import { useAuthentication } from "@/store/auth";
+import { toast } from "react-toastify";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,9 +28,15 @@ const Login = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      await googleLogin();
+      const res = await googleLogin();
+      if (res) {
+        const a = document.createElement("a");
+        a.href = res.url;
+        a.target = "_self";
+        a.click();
+      }
     } catch (error) {
-      console.error(error);
+      toast.error("Failed to process you request");
     }
   };
   return (

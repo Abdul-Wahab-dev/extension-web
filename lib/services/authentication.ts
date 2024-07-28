@@ -13,34 +13,26 @@ import AppError from "@/utils/appError";
 export const loginWithGoogle = async () => {
   // const provider = new GoogleAuthProvider();
   try {
-    // provider.setCustomParameters({
-    //   prompt: "select_account ",
-    // });
-    // const userCred = await signInWithPopup(auth, provider);
-    // const user = userCred.user;
-    // const idToken = await user.getIdToken();
+    const reture_uri = `${process.env.NEXT_PUBLIC_BASE_URL}`;
+    const res = await fetch(
+      `http://localhost:8000/api/v1/users/google-login?return_uri=${reture_uri}`,
+      {
+        method: "GET",
+      }
+    );
+    if (!res.ok) {
+      const response = await res.json();
+      const statusCode = response.status || 400;
+      const message =
+        response.message && response.message.length
+          ? response.message
+          : response;
 
-    // console.log({ user }, "user{}");
-    // Send user data to your backend with ID token
-    // const res = await axios.post(
-    //   "http://localhost:8000/api/v1/users/login",
-
-    //   {
-    //     email: user.email,
-    //     uid: user.uid,
-    //   },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${idToken}`,
-    //     },
-    //   }
-    // );
-
-    // console.log({ res }, "{res}");
-    return true;
+      throw new AppError(message, statusCode, response.validation ?? null);
+    }
+    return await res.json();
   } catch (err) {
-    console.log(err, "{error}");
-    return err;
+    throw err;
   }
 };
 
@@ -72,7 +64,7 @@ export const loginWithEmail = async (email: string, password: string) => {
         response.message && response.message.length
           ? response.message
           : response;
-      console.log({ response });
+
       throw new AppError(message, statusCode, response.validation ?? null);
     }
     const parsedResult = await res.json();

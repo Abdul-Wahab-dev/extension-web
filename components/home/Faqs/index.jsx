@@ -39,17 +39,21 @@ const Faqs = () => {
   ];
 
   return (
-    <div className="py-16 px-20 text-white md:p-8 bg-[#2e2e2e]">
-      <h3 className="text-4xl mb-2 sm:text-3xl">FAQs</h3>
-      <div className="flex flex-col">
-        {faqs.map((faq, index) => (
-          <Accordian
-            faq={faq}
-            key={index}
-            focused={index === focused}
-            handleFocus={() => setFocused(focused !== index ? index : null)}
-          />
-        ))}
+    <div className="bg-white md:p-20 p-8 text-[#454647] ">
+      <div className="custom_container mx-auto">
+        <div className=" ">
+          <h3 className="text-4xl mb-2 sm:text-3xl">FAQs</h3>
+          <div className="flex flex-col">
+            {faqs.map((faq, index) => (
+              <Accordian
+                faq={faq}
+                key={index}
+                focused={index === focused}
+                handleFocus={() => setFocused(focused !== index ? index : null)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

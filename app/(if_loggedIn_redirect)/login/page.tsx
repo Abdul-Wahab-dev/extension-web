@@ -15,20 +15,31 @@ const Login = () => {
   );
   const errors = useAuthentication((state) => state.error);
   const router = useRouter();
+
   const handleLogin = async () => {
     setLoading(true);
     try {
-      await loginWithemailAndPasswrd(email, password);
+      const token = await loginWithemailAndPasswrd(email, password);
+      if (typeof chrome !== "undefined" && chrome.runtime) {
+        chrome.runtime.sendMessage(
+          "fgmjbkjlmlljfmipgpipnkipiohbghal",
+          { name: "USER_AUTHENTICATION", token: token || "" },
+          (response) => {
+            console.log("Response:", response);
+          }
+        );
+      }
       router.replace("/");
     } catch (error) {
       setLoading(false);
     }
     setLoading(false);
   };
-
   const handleGoogleSignIn = async () => {
+    const redirectUrl = `${process.env.NEXT_PUBLIC_BASE_URL}`;
+
     try {
-      const res = await googleLogin();
+      const res = await googleLogin(redirectUrl);
       if (res) {
         const a = document.createElement("a");
         a.href = res.url;

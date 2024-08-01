@@ -10,12 +10,11 @@ import axios from "axios";
 import AppError from "@/utils/appError";
 
 // signin with google
-export const loginWithGoogle = async () => {
+export const loginWithGoogle = async (redirectUrl: string) => {
   // const provider = new GoogleAuthProvider();
   try {
-    const reture_uri = `${process.env.NEXT_PUBLIC_BASE_URL}`;
     const res = await fetch(
-      `http://localhost:8000/api/v1/users/google-login?return_uri=${reture_uri}`,
+      `http://localhost:8000/api/v1/users/google-login?return_uri=${redirectUrl}`,
       {
         method: "GET",
       }

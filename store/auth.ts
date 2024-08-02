@@ -14,10 +14,13 @@ interface AuthStoreType {
   error: {
     [keys: string]: string;
   } | null;
-  googleLogin: () => Promise<any>;
+  googleLogin: (redirectUrl: string) => Promise<any>;
   signOut: () => Promise<void>;
   setCurrentUser: (authUser: { [keys: string]: string }) => void;
-  loginWithemailAndPasswrd: (email: string, password: string) => Promise<void>;
+  loginWithemailAndPasswrd: (
+    email: string,
+    password: string
+  ) => Promise<string>;
   signUpWithEmail: (
     email: string,
     password: string,
@@ -29,10 +32,10 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
   isAuthenticated: false,
   user: null,
   error: null,
-  googleLogin: async () => {
+  googleLogin: async (redirectUrl: string) => {
     try {
       set({ error: null });
-      const res = await loginWithGoogle();
+      const res = await loginWithGoogle(redirectUrl);
       return res;
     } catch (error: any) {
       set({ error: error });
@@ -51,15 +54,9 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
       set({ error: null });
       const authUser = await loginWithEmail(email, password);
       console.log({ authUser });
-      if (authUser && authUser.uid) {
-        const tempObj = {
-          name: authUser.displayName,
-          email: authUser.email,
-          uid: authUser.uid,
-          image: authUser.photoURL ?? "",
-          providerId: authUser.providerData[0].providerId,
-        };
-        set({ user: tempObj, isAuthenticated: true });
+      if (authUser && authUser.user) {
+        set({ user: authUser.user, isAuthenticated: true });
+        return authUser.token;
       }
     } catch (error: any) {
       set({ error: error });

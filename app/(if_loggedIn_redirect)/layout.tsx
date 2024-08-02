@@ -11,14 +11,8 @@ export default function RootLayout({
   headers().forEach((el) => console.log(el));
   const webUrl = headers().get("x-search-params");
   if (auth.isAuthenticated()) {
-    if (webUrl && webUrl.includes("via_extension")) {
-      const token = auth.verifyToken();
-      redirect(`/?idToken=${token}`);
-    } else {
-      console.log("redirect");
-      redirect("/");
-    }
+    redirect("/");
   }
-  console.log("hello");
+
   return <>{children}</>;
 }

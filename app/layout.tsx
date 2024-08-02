@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { auth } from "@/lib/helper/auth";
+import Extension from "@/components/extension";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,11 +17,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let token = "";
+  if (auth.isAuthenticated()) {
+    token = auth.verifyToken();
+  }
+
   return (
     <html lang="en">
       <body className={inter.className}>
         {children}
         <ToastContainer />
+        <Extension token={token} />
       </body>
     </html>
   );

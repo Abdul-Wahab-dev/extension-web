@@ -20,16 +20,18 @@ const Login = () => {
     setLoading(true);
     try {
       const token = await loginWithemailAndPasswrd(email, password);
-      if (typeof chrome !== "undefined" && chrome.runtime) {
-        chrome.runtime.sendMessage(
-          "fgmjbkjlmlljfmipgpipnkipiohbghal",
-          { name: "USER_AUTHENTICATION", token: token || "" },
-          (response) => {
-            console.log("Response:", response);
-          }
-        );
+      if (token) {
+        if (typeof chrome !== "undefined" && chrome.runtime) {
+          chrome.runtime.sendMessage(
+            "fgmjbkjlmlljfmipgpipnkipiohbghal",
+            { name: "USER_AUTHENTICATION", token: token || "" },
+            (response) => {
+              console.log("Response:", response);
+            }
+          );
+        }
+        router.replace("/");
       }
-      router.replace("/");
     } catch (error) {
       setLoading(false);
     }

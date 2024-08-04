@@ -14,7 +14,7 @@ export const loginWithGoogle = async (redirectUrl: string) => {
   // const provider = new GoogleAuthProvider();
   try {
     const res = await fetch(
-      `http://localhost:8000/api/v1/users/google-login?return_uri=${redirectUrl}`,
+      `https://flexisaves.toolefy.com/api/v1/users/google-login?return_uri=${redirectUrl}`,
       {
         method: "GET",
       }
@@ -44,17 +44,22 @@ export const logout = async () => {
 // login with email
 export const loginWithEmail = async (email: string, password: string) => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/users/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://flexisaves.toolefy.com/api/v1/users/login",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "https://flexisaves.toolefy.com",
+        },
+        credentials: "include",
+        mode: "cors",
+      }
+    );
 
     if (!res.ok) {
       const response = await res.json();
@@ -80,17 +85,20 @@ export const signupWithEmailAndPassword = async (
   name: string
 ) => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/users/signup", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password: password,
-        name,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://flexisaves.toolefy.com/api/v1/users/signup",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password: password,
+          name,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!res.ok) {
       const error = await res.json();
@@ -109,7 +117,7 @@ export const signupWithEmailAndPassword = async (
 export const getCustomToken = async (token: string) => {
   try {
     const res = await axios.get(
-      "http://localhost:8000/api/v1/users/custom-token",
+      "https://flexisaves.toolefy.com/api/v1/users/custom-token",
 
       {
         headers: {

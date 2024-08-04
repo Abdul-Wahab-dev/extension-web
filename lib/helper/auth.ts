@@ -23,7 +23,7 @@ function verifyToken() {
   if (!token) {
     throw Error("unauthorized");
   }
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  const decoded = jwt.verify(token, process.env.JWT_SECRET!);
   // Check for expired token
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {

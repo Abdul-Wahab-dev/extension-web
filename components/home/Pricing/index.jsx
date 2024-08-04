@@ -51,9 +51,12 @@ const Pricing = () => {
             Choose the plan that suits your needs, cancel anytime.
           </p>
           <div className="flex gap-6 flex-wrap self-center justify-center">
-            {plans.map((element) => {
+            {plans.map((element, index) => {
               return (
-                <div className="w-[280px] h-[340px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg">
+                <div
+                  key={index}
+                  className="w-[280px] h-[340px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
+                >
                   <p className="flex flex-col text-[#454647] text-xl sm:text-lg">
                     {element.name}
                   </p>

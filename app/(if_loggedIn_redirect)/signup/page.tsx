@@ -34,7 +34,8 @@ const SignUp = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      const res = await googleLogin();
+      const redirectUrl = `${process.env.NEXT_PUBLIC_BASE_URL}`;
+      const res = await googleLogin(redirectUrl);
       if (res) {
         const a = document.createElement("a");
         a.href = res.url;
@@ -85,7 +86,7 @@ const SignUp = () => {
           </div>
           <button
             onClick={handleSignUp}
-            className="w-full p-3 bg-primary rounded text-[#454647] flex items-center justify-center gap-2"
+            className="w-full p-3 bg-primary rounded text-white flex items-center justify-center gap-2"
           >
             <span>Sign up</span>
             {loading ? <div className="spinner" id="spinner"></div> : null}

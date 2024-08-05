@@ -9,7 +9,7 @@ export default function RootLayout({
   options: any;
 }>) {
   headers().forEach((el) => console.log(el));
-  const webUrl = headers().get("x-search-params");
+
   if (auth.isAuthenticated()) {
     redirect("/");
   }

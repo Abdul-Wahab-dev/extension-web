@@ -1,12 +1,12 @@
 "use client";
-import { useEffect } from "react";
-import Faqs from "@/components/home/Faqs";
-import Features from "@/components/home/Features";
+import React, { useEffect } from "react";
+import Faqs from "@/components/home/faqs";
+import Features from "@/components/home/features";
 import Footer from "@/components/layout/Footer";
-import Future from "@/components/home/Future";
-import Hero from "@/components/home/Hero";
+import Future from "@/components/home/future";
+import Hero from "@/components/home/hero";
 import Navbar from "@/components/layout/Navbar";
-import Pricing from "@/components/home/Pricing";
+import Pricing from "@/components/home/pricing";
 export default function Home() {
   useEffect(() => {
     (async () => {

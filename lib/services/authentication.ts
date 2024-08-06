@@ -54,7 +54,6 @@ export const loginWithEmail = async (email: string, password: string) => {
         }),
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "https://flexisaves.toolefy.com",
         },
         credentials: "include",
       }

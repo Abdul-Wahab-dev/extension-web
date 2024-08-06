@@ -57,7 +57,6 @@ export const loginWithEmail = async (email: string, password: string) => {
           "Access-Control-Allow-Origin": "https://flexisaves.toolefy.com",
         },
         credentials: "include",
-        mode: "cors",
       }
     );
 

@@ -1,11 +1,3 @@
-// import {
-//   signInWithEmailAndPassword,
-//   GoogleAuthProvider,
-//   signInWithPopup,
-//   signOut,
-//   createUserWithEmailAndPassword,
-// } from "firebase/auth";
-// import { auth } from "@/app/firebase/config";
 import axios from "axios";
 import AppError from "@/utils/appError";
 
@@ -14,7 +6,7 @@ export const loginWithGoogle = async (redirectUrl: string) => {
   // const provider = new GoogleAuthProvider();
   try {
     const res = await fetch(
-      `https://flexisaves.toolefy.com/api/v1/users/google-login?return_uri=${redirectUrl}`,
+      `http://localhost:8000/api/v1/users/google-login?return_uri=${redirectUrl}`,
       {
         method: "GET",
       }
@@ -44,20 +36,17 @@ export const logout = async () => {
 // login with email
 export const loginWithEmail = async (email: string, password: string) => {
   try {
-    const res = await fetch(
-      "https://flexisaves.toolefy.com/api/v1/users/login",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("http://localhost:8000/api/v1/users/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
 
     if (!res.ok) {
       const response = await res.json();
@@ -83,20 +72,17 @@ export const signupWithEmailAndPassword = async (
   name: string
 ) => {
   try {
-    const res = await fetch(
-      "https://flexisaves.toolefy.com/api/v1/users/signup",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          password: password,
-          name,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("http://localhost:8000/api/v1/users/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password: password,
+        name,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!res.ok) {
       const error = await res.json();
@@ -115,7 +101,7 @@ export const signupWithEmailAndPassword = async (
 export const getCustomToken = async (token: string) => {
   try {
     const res = await axios.get(
-      "https://flexisaves.toolefy.com/api/v1/users/custom-token",
+      "http://localhost:8000/api/v1/users/custom-token",
 
       {
         headers: {

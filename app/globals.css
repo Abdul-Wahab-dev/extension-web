@@ -24,6 +24,22 @@
   height: 18px;
   animation: spin 0.5s linear infinite;
 }
+.sub-btn .spinner {
+  border-top: 2px solid #454647 !important;
+}
+.sub-btn:hover .spinner {
+  border-top: 2px solid #f3f3f3 !important;
+}
+
+.loader {
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top: 2px solid #ffffff;
+  width: 18px;
+  height: 18px;
+  -webkit-animation: spin 0.5s linear infinite; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
 
 /* Safari */
 @-webkit-keyframes spin {

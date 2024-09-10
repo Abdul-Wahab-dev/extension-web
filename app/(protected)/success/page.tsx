@@ -11,7 +11,6 @@ const Success = () => {
       setLoading(true);
       const res = await billingPortal();
       if (res) {
-        console.log(res);
         const { billingPortal } = res;
         const a = document.createElement("a");
         a.href = billingPortal.url;

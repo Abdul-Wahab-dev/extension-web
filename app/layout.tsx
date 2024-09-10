@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth } from "@/lib/helper/auth";
 import Extension from "@/components/extension";
+import AuthUser from "@/components/auth/AuthUser";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,17 +18,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let token = "";
+  let tempToken = "";
+  let user = null;
   if (auth.isAuthenticated()) {
-    token = auth.verifyToken();
+    const { token, decoded } = auth.verifyToken();
+    user = decoded;
+    tempToken = token;
   }
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <AuthUser user={user}>{children}</AuthUser>
         <ToastContainer />
-        <Extension token={token} />
+        <Extension token={tempToken} />
       </body>
     </html>
   );

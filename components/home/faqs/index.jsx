@@ -39,7 +39,7 @@ const Faqs = () => {
   ];
 
   return (
-    <div className="bg-white md:p-20 p-8 text-[#454647] ">
+    <section className="bg-white md:p-20 p-8 text-[#454647]" id="faqs">
       <div className="custom_container mx-auto">
         <div className=" ">
           <h3 className="text-4xl mb-2 sm:text-3xl">FAQs</h3>
@@ -55,7 +55,7 @@ const Faqs = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

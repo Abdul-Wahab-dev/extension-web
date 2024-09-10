@@ -30,7 +30,24 @@ export const loginWithGoogle = async (redirectUrl: string) => {
 // signout
 
 export const logout = async () => {
-  // await signOut(auth);
+  try {
+    const result = await fetch("http://localhost:8000/api/v1/users/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    if (!result.ok) {
+      const res = await result.json();
+      throw new Error(res.message);
+    }
+
+    const res = await result.json();
+    return true;
+  } catch (error) {
+    throw error;
+  }
 };
 
 // login with email
@@ -61,7 +78,6 @@ export const loginWithEmail = async (email: string, password: string) => {
     const parsedResult = await res.json();
     return parsedResult;
   } catch (error) {
-    console.log(error, "errir in authentication");
     throw error;
   }
 };
@@ -90,27 +106,30 @@ export const signupWithEmailAndPassword = async (
       throw new Error(error.message);
     }
     const parsedResult = await res.json();
-    console.log(parsedResult);
-
     return parsedResult;
   } catch (error) {
     throw error;
   }
 };
 
-export const getCustomToken = async (token: string) => {
+export const getCurrentUser = async () => {
   try {
-    const res = await axios.get(
-      "http://localhost:8000/api/v1/users/custom-token",
+    const res = await fetch("http://localhost:8000/api/v1/users/current-user", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
 
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return res.data.token;
+    if (!res.ok) {
+      const error = await res.json();
+      console.log(error);
+      throw new Error(error.message);
+    }
+    const parsedResult = await res.json();
+    return parsedResult;
   } catch (error) {
-    throw error;
+    return false;
   }
 };

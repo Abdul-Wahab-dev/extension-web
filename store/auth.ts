@@ -46,7 +46,8 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
     set({ user: null, isAuthenticated: false });
   },
   setCurrentUser: (authUser) => {
-    set({ user: authUser, isAuthenticated: true });
+    if (authUser && Object.keys(authUser).length > 0)
+      set({ user: authUser, isAuthenticated: true });
   },
 
   loginWithemailAndPasswrd: async (email, password) => {

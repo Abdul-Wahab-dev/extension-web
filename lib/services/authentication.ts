@@ -1,4 +1,3 @@
-import axios from "axios";
 import AppError from "@/utils/appError";
 
 // signin with google
@@ -124,7 +123,7 @@ export const getCurrentUser = async () => {
 
     if (!res.ok) {
       const error = await res.json();
-      console.log(error);
+
       throw new Error(error.message);
     }
     const parsedResult = await res.json();

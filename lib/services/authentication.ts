@@ -1,12 +1,3 @@
-// import {
-//   signInWithEmailAndPassword,
-//   GoogleAuthProvider,
-//   signInWithPopup,
-//   signOut,
-//   createUserWithEmailAndPassword,
-// } from "firebase/auth";
-// import { auth } from "@/app/firebase/config";
-import axios from "axios";
 import AppError from "@/utils/appError";
 
 // signin with google
@@ -14,7 +5,7 @@ export const loginWithGoogle = async (redirectUrl: string) => {
   // const provider = new GoogleAuthProvider();
   try {
     const res = await fetch(
-      `https://flexisaves.toolefy.com/api/v1/users/google-login?return_uri=${redirectUrl}`,
+      `http://localhost:8000/api/v1/users/google-login?return_uri=${redirectUrl}`,
       {
         method: "GET",
       }
@@ -38,26 +29,40 @@ export const loginWithGoogle = async (redirectUrl: string) => {
 // signout
 
 export const logout = async () => {
-  // await signOut(auth);
+  try {
+    const result = await fetch("http://localhost:8000/api/v1/users/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    if (!result.ok) {
+      const res = await result.json();
+      throw new Error(res.message);
+    }
+
+    const res = await result.json();
+    return true;
+  } catch (error) {
+    throw error;
+  }
 };
 
 // login with email
 export const loginWithEmail = async (email: string, password: string) => {
   try {
-    const res = await fetch(
-      "https://flexisaves.toolefy.com/api/v1/users/login",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("http://localhost:8000/api/v1/users/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
 
     if (!res.ok) {
       const response = await res.json();
@@ -72,7 +77,6 @@ export const loginWithEmail = async (email: string, password: string) => {
     const parsedResult = await res.json();
     return parsedResult;
   } catch (error) {
-    console.log(error, "errir in authentication");
     throw error;
   }
 };
@@ -83,20 +87,17 @@ export const signupWithEmailAndPassword = async (
   name: string
 ) => {
   try {
-    const res = await fetch(
-      "https://flexisaves.toolefy.com/api/v1/users/signup",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          password: password,
-          name,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("http://localhost:8000/api/v1/users/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password: password,
+        name,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!res.ok) {
       const error = await res.json();
@@ -104,27 +105,30 @@ export const signupWithEmailAndPassword = async (
       throw new Error(error.message);
     }
     const parsedResult = await res.json();
-    console.log(parsedResult);
-
     return parsedResult;
   } catch (error) {
     throw error;
   }
 };
 
-export const getCustomToken = async (token: string) => {
+export const getCurrentUser = async () => {
   try {
-    const res = await axios.get(
-      "https://flexisaves.toolefy.com/api/v1/users/custom-token",
+    const res = await fetch("http://localhost:8000/api/v1/users/current-user", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
 
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return res.data.token;
+    if (!res.ok) {
+      const error = await res.json();
+
+      throw new Error(error.message);
+    }
+    const parsedResult = await res.json();
+    return parsedResult;
   } catch (error) {
-    throw error;
+    return false;
   }
 };

@@ -3,9 +3,9 @@ import Image from "next/image";
 import chrome from "@/assets/common/chrome.svg";
 const Future = () => {
   return (
-    <div className="bg-white">
-      <div className="custom_container">
-        <div className="flex flex-col bg-white text-center py-16 items-center md:p-8">
+    <section className="bg-white" id="download">
+      <div className="custom_container mx-auto">
+        <div className="flex flex-col bg-white text-center py-20 items-center md:p-8">
           <h2 className="text-[#454647] text-3xl font-normal mb-10 sm:text-4xl">
             Join the future of web browsing today
           </h2>
@@ -25,7 +25,7 @@ const Future = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

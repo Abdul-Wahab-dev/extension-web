@@ -1,6 +1,6 @@
 const Features = () => {
   return (
-    <div className="md:p-20 p-8  bg-[#f9f9f9] ">
+    <section className="md:p-20 p-8  bg-[#f9f9f9] " id="features">
       <div className="custom_container mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
@@ -91,7 +91,7 @@ const Features = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

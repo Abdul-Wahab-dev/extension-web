@@ -30,5 +30,5 @@ function verifyToken() {
     throw Error("unauthorized");
   }
   const id = decoded.sub;
-  return token;
+  return { token, decoded };
 }

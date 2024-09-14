@@ -7,7 +7,7 @@ const Future = () => {
       <div className="custom_container mx-auto">
         <div className="flex flex-col bg-white text-center py-20 items-center md:p-8">
           <h2 className="text-[#454647] text-3xl font-normal mb-10 sm:text-4xl">
-            Join the future of web browsing today
+            Download to Save and Manage Web Content Seamlessly
           </h2>
           <Link
             href="https://chromewebstore.google.com/detail/sitepro-chat-with-website/fggdmholnflfmcihdaaifjenegkffmpf?hl=en"

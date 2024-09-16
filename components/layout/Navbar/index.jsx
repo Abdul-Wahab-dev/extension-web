@@ -164,14 +164,14 @@ const Header = () => {
                       />
                       <p className="text-sm text-gray-700">{user.name}</p>
                       <p className="text-sm text-gray-700">{user.email}</p>
-                      <div className=" flex items-center justify-around w-full">
+                      {/* <div className=" flex items-center justify-around w-full">
                         <p className="text-sm text-gray-700">Tokens</p>
                         <p className="text-sm text-gray-700">1200</p>
                       </div>
                       <div className=" flex items-center justify-around w-full">
                         <p className="text-sm text-gray-700">collections</p>
                         <p className="text-sm text-gray-700">1200</p>
-                      </div>
+                      </div> */}
                     </div>
                   ) : null}
 
@@ -276,12 +276,6 @@ const Header = () => {
                   onClick={toggleDropdown}
                   className="flex items-center gap-2 relative justify-center w-full rounded-md  px-2 py-2 bg-white text-lg  text-gray-700 hover:bg-gray-50 focus:outline-none"
                 >
-                  {/* <Image
-                    src="/assests/icons/profile-placeholder.png"
-                    width={23}
-                    height={23}
-                    alt="profile"
-                  /> */}
                   <span>{user.name}</span>
                   <svg
                     className=" h-5 w-5"
@@ -299,7 +293,7 @@ const Header = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="top-[45px] absolute right-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="top-[45px] z-50 absolute right-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div
                       className="pb-1"
                       role="menu"
@@ -313,14 +307,14 @@ const Header = () => {
                           alt="profile-placeholder"
                         />
                         <p className="text-sm text-gray-700">{user.email}</p>
-                        <div className=" flex items-center justify-around w-full">
+                        {/* <div className=" flex items-center justify-around w-full">
                           <p className="text-sm text-gray-700">Tokens</p>
                           <p className="text-sm text-gray-700">1200</p>
                         </div>
                         <div className=" flex items-center justify-around w-full">
                           <p className="text-sm text-gray-700">collections</p>
                           <p className="text-sm text-gray-700">1200</p>
-                        </div>
+                        </div> */}
                       </div>
 
                       <button

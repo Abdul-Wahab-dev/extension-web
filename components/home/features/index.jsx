@@ -6,7 +6,7 @@ const Features = () => {
           <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
             <div className="w-3/4 md:w-full">
               <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
-                Instant chat
+                Save and Manage Your Content - Temporarily or Permanently
               </h3>
               <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
                 Say goodbye to endless searching and make your online experience
@@ -51,13 +51,10 @@ const Features = () => {
             </div>
             <div className="w-3/4 md:w-full">
               <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
-                Gather links
+                Organize Content by Website for Easy Access
               </h3>
               <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
-                Tired of browsing endlessly for that one piece of information?
-                With SitePro, you can now collect links from the website you
-                visit. Search and select the links relevant to your needs and
-                start chatting..
+                Quickly Find Saved Content Based on the Website You’re Browsing
               </p>
             </div>
           </div>
@@ -66,11 +63,14 @@ const Features = () => {
           <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
             <div className="w-3/4 md:w-full">
               <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
-                Recent chats
+                Group Your Saved Content for Any Domain and topic
               </h3>
               <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
-                Recent chats are saved in your dashboard. Come back to your
-                chatbots whenever you want.
+                Organize your saved content into personalized collections by
+                website or topic. For example, create a collection for
+                upwork.com, and when you visit the site, simply use a shortcut
+                to instantly access all saved content for that domain under the
+                Collections section.
               </p>
             </div>
             <div className="hidden h-fit items-center relative mt-4 md:flex">

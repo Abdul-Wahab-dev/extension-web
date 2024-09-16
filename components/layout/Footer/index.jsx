@@ -18,7 +18,7 @@ const Footer = () => {
                   />
                 </Link>
                 <p className="text-center mt-3 text-lg">
-                  Empowering Digital Excellence for Free – Simplified.
+                  Save Content Effortlessly, Organize with Precision
                 </p>
               </div>
 

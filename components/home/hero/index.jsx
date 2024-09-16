@@ -9,13 +9,21 @@ const Hero = () => {
         <div className="flex flex-col mb-20 md:flex-row md:mb-0">
           <div className="flex flex-col m-auto flex-1 p-20 md:p-8">
             <h1 className="text-6xl text-[#454647] font-normal mb-4 sm:text-5xl">
-              <strong className="text-primary font-normal">Chat</strong> with
-              websites <br /> like a{" "}
-              <strong className="text-primary font-normal">pro</strong>
+              Save Content
+              <strong className="text-primary font-normal">
+                {" "}
+                Effortlessly
+              </strong>{" "}
+              <br />
+              and <strong className="text-primary font-normal">
+                Access
+              </strong>{" "}
+              it Anytime, Anywhere!
             </h1>
             <p className="text-[#454647] text-xl mb-12 sm:text-lg">
-              SitePro revolutionizes your web browsing experience by allowing
-              you to integrate AI chatbot technology directly into any website.{" "}
+              Flexisaves lets you instantly save and manage web content. Keep
+              your research, articles, and inspiration at your fingertips with
+              just few clicks.
             </p>
             <Link
               href="https://chromewebstore.google.com/detail/sitepro-chat-with-website/fggdmholnflfmcihdaaifjenegkffmpf?hl=en"

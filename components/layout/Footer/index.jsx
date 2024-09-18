@@ -4,7 +4,7 @@ import FramerDiv from "@/components/framermotion/divblock";
 const Footer = () => {
   return (
     <div>
-      <div className="w-full bg-[#f9f9f9] py-10 relative overflow-hidden">
+      <div className="w-full bg-[#f9f9f9] relative py-10 overflow-hidden">
         <FramerDiv delay={0.25}>
           <div className="custom_container mx-auto overflow-hidden">
             <div className="flex justify-between text-slate-800 flex-col items-center gap-10">
@@ -77,7 +77,7 @@ const Footer = () => {
       </div>
       <div className="bg-[#f9f9f9] p-5">
         <div className="custom_container mx-auto flex items-center justify-center text-gray-800">
-          <p>Toolefy © 2023. All Rights Reserved.</p>
+          <p>FLEXISAVES © 2023. All Rights Reserved.</p>
         </div>
       </div>
     </div>

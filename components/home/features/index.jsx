@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Features = () => {
   return (
     <section className="md:p-20 p-8  bg-[#f9f9f9] " id="features">
@@ -26,18 +28,24 @@ const Features = () => {
               <div className="h-0.5 w-20 bg-primary"></div>
             </div>
             <div className="mx-auto">
-              <video className="" width={250} muted autoPlay loop>
-                <source src="https://sitepro-marketting.s3.amazonaws.com/sitepro-demo.mov" />
-              </video>
+              <img
+                src={"/assests/content.png"}
+                width={300}
+                height={100}
+                className="shadow-lg border"
+              />
             </div>
           </div>
         </div>
         <div className="flex flex-col-reverse md:flex-row">
           <div className="flex-1 flex items-center  pb-20 border-subTitle md:border-r-2 border-r-0 md:pb-0">
             <div className="mx-auto md:py-10">
-              <video className="" width={250} muted autoPlay loop>
-                <source src="https://sitepro-marketting.s3.amazonaws.com/sitepro-demo-links.mov" />
-              </video>
+              <img
+                src={"/assests/domain.png"}
+                width={300}
+                height={100}
+                className="shadow-lg border"
+              />
             </div>
             <div className="hidden h-fit items-center relative mt-4 md:flex">
               <div className="h-0.5 w-20 bg-primary"></div>
@@ -84,9 +92,12 @@ const Features = () => {
               <div className="h-0.5 w-20 bg-primary"></div>
             </div>
             <div className="mx-auto">
-              <video className="" width={250} muted autoPlay loop>
-                <source src="https://sitepro-marketting.s3.amazonaws.com/sitepro-demo-recent.mov" />
-              </video>
+              <img
+                src={"/assests/collection.png"}
+                width={300}
+                height={100}
+                className="shadow-lg border"
+              />
             </div>
           </div>
         </div>

@@ -97,7 +97,7 @@ const Header = () => {
       <div className="bg-winter-wizard h-[60px] text-[#454647] focus:outline-none z-50">
         <div className="flex items-center justify-between gap-5 mx-auto h-[60px] custom_container">
           <Link href="/">
-            <img src="/assests/logo.png" width={160} alt="logo" />
+            <img src="/assests/icons/logo.svg" width={200} alt="logo" />
           </Link>
 
           {/* MOBILE MENU */}
@@ -162,8 +162,8 @@ const Header = () => {
                         height={35}
                         alt="profile-placeholder"
                       />
-                      <p className="text-sm text-gray-700">{user.name}</p>
-                      <p className="text-sm text-gray-700">{user.email}</p>
+                      <p className="text-sm text-gray-700">{auth.user.name}</p>
+                      <p className="text-sm text-gray-700">{auth.user.email}</p>
                       {/* <div className=" flex items-center justify-around w-full">
                         <p className="text-sm text-gray-700">Tokens</p>
                         <p className="text-sm text-gray-700">1200</p>
@@ -276,7 +276,7 @@ const Header = () => {
                   onClick={toggleDropdown}
                   className="flex items-center gap-2 relative justify-center w-full rounded-md  px-2 py-2 bg-white text-lg  text-gray-700 hover:bg-gray-50 focus:outline-none"
                 >
-                  <span>{user.name}</span>
+                  <span>{auth.user.name}</span>
                   <svg
                     className=" h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -306,7 +306,9 @@ const Header = () => {
                           height={35}
                           alt="profile-placeholder"
                         />
-                        <p className="text-sm text-gray-700">{user.email}</p>
+                        <p className="text-sm text-gray-700">
+                          {auth.user.email}
+                        </p>
                         {/* <div className=" flex items-center justify-around w-full">
                           <p className="text-sm text-gray-700">Tokens</p>
                           <p className="text-sm text-gray-700">1200</p>

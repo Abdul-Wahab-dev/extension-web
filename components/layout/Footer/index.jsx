@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="w-[100%] flex flex-col items-center justify-center gap-5">
                 <Link href="/">
                   <Image
-                    src="/assests/logo.png"
+                    src="/assests/icons/footer-logo.svg"
                     width={160}
                     height={100}
                     alt="logo"

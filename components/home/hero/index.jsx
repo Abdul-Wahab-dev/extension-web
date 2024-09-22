@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="custom_container mx-auto">
         <div className="flex flex-col mb-20  gap-10 md:gap-0 md:flex-row md:mb-0">
           <div className="flex flex-col m-auto flex-1  p-2 md:p-8">
-            <h1 className="text-6xl text-[#454647] z-40 font-normal mb-4 sm:text-5xl">
+            <h1 className="text-3xl text-[#454647] z-40 font-normal mb-4 sm:text-5xl">
               Save Content
               <strong className="text-primary font-normal">
                 {" "}
@@ -46,18 +46,15 @@ const Hero = () => {
             </Link>
           </div>
           <div className="flex-1 m-auto z-40">
-            <video
+            <img
               className="mx-auto md:mt-6"
               width={320}
-              muted
-              autoPlay
-              loop
+              height={100}
+              src={"/assests/home.png"}
               style={{
                 boxShadow: "15px 15px 100px 0px #CEE4FC",
               }}
-            >
-              <source src="https://sitepro-marketting.s3.amazonaws.com/sitepro-demo.mov" />
-            </video>
+            />
           </div>
         </div>
       </div>

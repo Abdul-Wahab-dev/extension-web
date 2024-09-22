@@ -8,7 +8,7 @@ const Future = () => {
       <div className="w-[150px] h-[150px] z-0 bg-transparent border-[#CEE4FC]  border-4 rounded-full absolute -bottom-[50px] -right-[50px]"></div>
       <div className="w-[120px] h-[120px] bg-[#CEE4FC] rounded-full absolute top-[70%] z-0 -translate-y-[30%] left-[30%] -translate-x-[50%]"></div>
       <div className="custom_container mx-auto">
-        <div className="flex flex-col bg-white text-center items-center md:p-8">
+        <div className="flex flex-col bg-white text-center items-center md:p-8 z-50">
           <h2 className="text-[#454647] text-3xl font-normal mb-5 sm:text-4xl">
             Download to Save and Manage <br />
             Web Content Seamlessly
@@ -16,6 +16,7 @@ const Future = () => {
           <Link
             href="https://chromewebstore.google.com/detail/sitepro-chat-with-website/fggdmholnflfmcihdaaifjenegkffmpf?hl=en"
             target="_blank"
+            className="z-50"
           >
             <button className="flex px-6 py-3 bg-primary font-medium text-white w-fit rounded-md sm:self-center hover:backdrop-brightness-50">
               <Image

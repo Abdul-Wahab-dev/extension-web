@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { handleContact } from "@/lib/services/product";
 import { toast } from "react-toastify";
-const page = () => {
+const Contact = () => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState("");
   const [detail, setDetail] = useState("");
@@ -112,4 +112,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Contact;

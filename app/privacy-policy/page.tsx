@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-const page = () => {
+const Privacy = () => {
   return (
     <>
       <Navbar />
@@ -126,4 +126,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Privacy;

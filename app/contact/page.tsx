@@ -1,7 +1,32 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import { handleContact } from "@/lib/services/product";
+import { toast } from "react-toastify";
 const page = () => {
+  const [subject, setSubject] = useState("");
+  const [email, setEmail] = useState("");
+  const [detail, setDetail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      if (!email || !detail || !subject) {
+        toast.error("Fields require");
+        return;
+      }
+      const res = await handleContact(email, subject, detail);
+      toast.success("Your request is submitted!");
+      setEmail("");
+      setDetail("");
+      setSubject("");
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("Failed to process your request");
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -27,6 +52,8 @@ const page = () => {
                   <input
                     type="email"
                     id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                     placeholder="name@flowbite.com"
                     required
@@ -42,6 +69,8 @@ const page = () => {
                   <input
                     type="text"
                     id="subject"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                     className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500"
                     placeholder="Let us know how we can help you"
                     required
@@ -57,15 +86,21 @@ const page = () => {
                   <textarea
                     id="message"
                     rows={6}
+                    value={detail}
+                    onChange={(e) => setDetail(e.target.value)}
                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
                     placeholder="Leave a comment..."
                   ></textarea>
                 </div>
                 <button
-                  type="submit"
-                  className="px-6 py-3 bg-primary font-medium text-white w-fit rounded-md "
+                  type="button"
+                  onClick={handleSubmit}
+                  className="px-6 py-3 bg-primary font-medium text-white w-fit rounded-md flex items-center justify-center gap-2"
                 >
-                  Send message
+                  <span>Send message</span>
+                  {loading ? (
+                    <div className="spinner" id="spinner"></div>
+                  ) : null}
                 </button>
               </form>
             </div>

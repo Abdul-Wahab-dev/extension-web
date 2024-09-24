@@ -10,7 +10,9 @@ import Pricing from "@/components/home/pricing";
 export default function Home() {
   useEffect(() => {
     (async () => {
-      const res = await fetch("http://localhost:8000/api/v1/users/test");
+      const res = await fetch(
+        "http://flexisaves.toolefy.com/api/v1/users/test"
+      );
       if (res.ok) {
         console.log(res);
       }

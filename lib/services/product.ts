@@ -3,7 +3,7 @@ import AppError from "@/utils/appError";
 
 export const getProducts = async () => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/product/", {
+    const res = await fetch("http://flexisaves.toolefy.com/api/v1/product/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export const handleContact = async (
   detail: string
 ) => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/contact", {
+    const res = await fetch("http://flexisaves.toolefy.com/api/v1/contact", {
       method: "POST",
       body: JSON.stringify({
         email,

@@ -5,7 +5,7 @@ export const loginWithGoogle = async (redirectUrl: string) => {
   // const provider = new GoogleAuthProvider();
   try {
     const res = await fetch(
-      `http://localhost:8000/api/v1/users/google-login?return_uri=${redirectUrl}`,
+      `http://3.141.101.121/api/v1/users/google-login?return_uri=${redirectUrl}`,
       {
         method: "GET",
       }
@@ -30,7 +30,7 @@ export const loginWithGoogle = async (redirectUrl: string) => {
 
 export const logout = async () => {
   try {
-    const result = await fetch("http://localhost:8000/api/v1/users/logout", {
+    const result = await fetch("http://3.141.101.121/api/v1/users/logout", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export const logout = async () => {
 // login with email
 export const loginWithEmail = async (email: string, password: string) => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/users/login", {
+    const res = await fetch("http://3.141.101.121/api/v1/users/login", {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -87,7 +87,7 @@ export const signupWithEmailAndPassword = async (
   name: string
 ) => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/users/signup", {
+    const res = await fetch("http://3.141.101.121/api/v1/users/signup", {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -113,7 +113,7 @@ export const signupWithEmailAndPassword = async (
 
 export const getCurrentUser = async () => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/users/current-user", {
+    const res = await fetch("http://3.141.101.121/api/v1/users/current-user", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

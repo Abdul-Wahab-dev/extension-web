@@ -10,7 +10,7 @@ import Pricing from "@/components/home/pricing";
 export default function Home() {
   useEffect(() => {
     (async () => {
-      const res = await fetch("http://localhost:8000/api/v1/users/test");
+      const res = await fetch("http://3.141.101.121/api/v1/users/test");
       if (res.ok) {
         console.log(res);
       }

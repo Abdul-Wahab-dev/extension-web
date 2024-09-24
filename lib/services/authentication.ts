@@ -5,7 +5,7 @@ export const loginWithGoogle = async (redirectUrl: string) => {
   // const provider = new GoogleAuthProvider();
   try {
     const res = await fetch(
-      `http://3.141.101.121/api/v1/users/google-login?return_uri=${redirectUrl}`,
+      `http://flexisaves.toolefy.com/api/v1/users/google-login?return_uri=${redirectUrl}`,
       {
         method: "GET",
       }
@@ -30,13 +30,16 @@ export const loginWithGoogle = async (redirectUrl: string) => {
 
 export const logout = async () => {
   try {
-    const result = await fetch("http://3.141.101.121/api/v1/users/logout", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const result = await fetch(
+      "http://flexisaves.toolefy.com/api/v1/users/logout",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     if (!result.ok) {
       const res = await result.json();
       throw new Error(res.message);
@@ -52,17 +55,20 @@ export const logout = async () => {
 // login with email
 export const loginWithEmail = async (email: string, password: string) => {
   try {
-    const res = await fetch("http://3.141.101.121/api/v1/users/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "http://flexisaves.toolefy.com/api/v1/users/login",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     if (!res.ok) {
       const response = await res.json();
@@ -87,17 +93,20 @@ export const signupWithEmailAndPassword = async (
   name: string
 ) => {
   try {
-    const res = await fetch("http://3.141.101.121/api/v1/users/signup", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password: password,
-        name,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "http://flexisaves.toolefy.com/api/v1/users/signup",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password: password,
+          name,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!res.ok) {
       const error = await res.json();
@@ -113,13 +122,16 @@ export const signupWithEmailAndPassword = async (
 
 export const getCurrentUser = async () => {
   try {
-    const res = await fetch("http://3.141.101.121/api/v1/users/current-user", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "http://flexisaves.toolefy.com/api/v1/users/current-user",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     if (!res.ok) {
       const error = await res.json();

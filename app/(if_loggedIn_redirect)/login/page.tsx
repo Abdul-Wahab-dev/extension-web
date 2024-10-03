@@ -23,7 +23,7 @@ const Login = () => {
       if (token) {
         if (typeof chrome !== "undefined" && chrome.runtime) {
           chrome.runtime.sendMessage(
-            "fgmjbkjlmlljfmipgpipnkipiohbghal",
+            "mmaidogdkpmcnbjepbfhicpecemdeiij",
             { name: "USER_AUTHENTICATION", token: token || "" },
             (response) => {
               console.log("Response:", response);

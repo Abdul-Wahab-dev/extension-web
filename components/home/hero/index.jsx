@@ -29,8 +29,7 @@ const Hero = () => {
               just few clicks.
             </p>
             <Link
-              // href="https://chromewebstore.google.com/detail/sitepro-chat-with-website/fggdmholnflfmcihdaaifjenegkffmpf?hl=en"
-              href="/"
+              href="https://chromewebstore.google.com/detail/flexisaves/mmaidogdkpmcnbjepbfhicpecemdeiij"
               target="_blank"
               className="z-40"
             >

@@ -4,7 +4,7 @@ import AppError from "@/utils/appError";
 export const createSubscription = async (priceId: number) => {
   try {
     const res = await fetch(
-      "http://flexisaves.toolefy.com/api/v1/subscription",
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/subscription`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -35,7 +35,7 @@ export const createSubscription = async (priceId: number) => {
 export const updateSubscription = async (priceId: number) => {
   try {
     const res = await fetch(
-      "http://flexisaves.toolefy.com/api/v1/subscription/update",
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/subscription/update`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -67,7 +67,7 @@ export const updateSubscription = async (priceId: number) => {
 export const billingPortal = async () => {
   try {
     const res = await fetch(
-      "http://flexisaves.toolefy.com/api/v1/billing-portal",
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/billing-portal`,
       {
         method: "GET",
         headers: {

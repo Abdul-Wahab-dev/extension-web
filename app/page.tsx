@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        "http://flexisaves.toolefy.com/api/v1/users/test"
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/test`
       );
       if (res.ok) {
         console.log(res);

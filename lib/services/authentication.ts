@@ -5,7 +5,7 @@ export const loginWithGoogle = async (redirectUrl: string) => {
   // const provider = new GoogleAuthProvider();
   try {
     const res = await fetch(
-      `http://flexisaves.toolefy.com/api/v1/users/google-login?return_uri=${redirectUrl}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/google-login?return_uri=${redirectUrl}`,
       {
         method: "GET",
       }
@@ -31,7 +31,7 @@ export const loginWithGoogle = async (redirectUrl: string) => {
 export const logout = async () => {
   try {
     const result = await fetch(
-      "http://flexisaves.toolefy.com/api/v1/users/logout",
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/logout`,
       {
         method: "GET",
         headers: {
@@ -56,7 +56,7 @@ export const logout = async () => {
 export const loginWithEmail = async (email: string, password: string) => {
   try {
     const res = await fetch(
-      "http://flexisaves.toolefy.com/api/v1/users/login",
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/login`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -94,7 +94,7 @@ export const signupWithEmailAndPassword = async (
 ) => {
   try {
     const res = await fetch(
-      "http://flexisaves.toolefy.com/api/v1/users/signup",
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/signup`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -123,7 +123,7 @@ export const signupWithEmailAndPassword = async (
 export const getCurrentUser = async () => {
   try {
     const res = await fetch(
-      "http://flexisaves.toolefy.com/api/v1/users/current-user",
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/current-user`,
       {
         method: "GET",
         headers: {

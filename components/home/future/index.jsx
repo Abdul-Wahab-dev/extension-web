@@ -14,7 +14,7 @@ const Future = () => {
             Web Content Seamlessly
           </h2>
           <Link
-            href="https://chromewebstore.google.com/detail/sitepro-chat-with-website/fggdmholnflfmcihdaaifjenegkffmpf?hl=en"
+            href="https://chromewebstore.google.com/detail/flexisaves/mmaidogdkpmcnbjepbfhicpecemdeiij?hl=en"
             target="_blank"
             className="z-50"
           >

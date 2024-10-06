@@ -4,7 +4,7 @@ type Props = {
   token: string;
 };
 const Extension: React.FC<Props> = ({ token }) => {
-  useEffect(() => {
+   useEffect(() => {
     if (token) {
       if (window) {
         window.postMessage(

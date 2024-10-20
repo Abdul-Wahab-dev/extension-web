@@ -7,7 +7,7 @@ const Hero = () => {
     <div className="md:p-20 sm:p-10 relative">
       <div className="w-[60px] h-[60px] bg-[#CEE4FC] rounded-full absolute top-10 left-[50%] shadow-lg -translate-x-[40%]"></div>
       <div className="w-[150px] h-[150px] z-0 bg-transparent border-[#CEE4FC] border-4 rounded-full absolute top-[30%] -translate-y-[50%] left-0 -translate-x-[50%]"></div>
-      <div className="w-[120px] h-[120px] bg-[#CEE4FC] rounded-full absolute top-[70%] z-0 -translate-y-[30%] left-[30%] shadow-lg -translate-x-[50%]"></div>
+      <div className="w-[120px] h-[120px] bg-[#CEE4FC] rounded-full absolute top-[70%] z-0 -translate-y-[30%] left-[35%] shadow-lg -translate-x-[50%]"></div>
       <div className="custom_container mx-auto">
         <div className="flex flex-col mb-20  gap-10 md:gap-0 md:flex-row md:mb-0">
           <div className="flex flex-col m-auto flex-1  p-2 md:p-8">

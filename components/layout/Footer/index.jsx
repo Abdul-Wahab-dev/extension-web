@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       <div className="w-full bg-[#f9f9f9] relative py-10 overflow-hidden">
-        <FramerDiv delay={0.25}>
+        <div>
           <div className="custom_container mx-auto overflow-hidden">
             <div className="flex justify-between text-slate-800 flex-col items-center gap-10">
               <div className="w-[100%] flex flex-col items-center justify-center gap-5">
@@ -42,7 +42,7 @@ const Footer = () => {
                     </div>
                   </a>
                 </li>
-                <li className="flex gap-3 items-center">
+                {/* <li className="flex gap-3 items-center">
                   <div className="w-[40px] h-[40px] bg-white flex items-center justify-center shadow-lg rounded-md">
                     <Image
                       src={"/assests/icons/telephone.png"}
@@ -55,7 +55,7 @@ const Footer = () => {
                     <p className="font-semibold text-sm">Phone</p>
                     <p className="text-sm">+923096171080</p>
                   </div>
-                </li>
+                </li> */}
                 <li className="flex gap-3 items-center">
                   <div className="w-[40px] h-[40px] bg-white flex items-center justify-center shadow-lg rounded-md border-gray-400">
                     <Image
@@ -73,7 +73,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-        </FramerDiv>
+        </div>
       </div>
       <div className="bg-[#f9f9f9] p-5">
         <div className="custom_container mx-auto flex items-center justify-center text-gray-800">

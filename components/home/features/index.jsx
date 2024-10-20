@@ -1,20 +1,20 @@
-import Image from "next/image";
-
 const Features = () => {
   return (
     <section className="md:p-20 p-8  bg-[#f9f9f9] " id="features">
       <div className="custom_container mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
-            <div className="w-3/4 md:w-full">
+            <div className="w-full md:w-full">
               <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
                 Save and Manage Your Content - Temporarily or Permanently
               </h3>
               <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
-                Say goodbye to endless searching and make your online experience
-                smoother with SitePro. Train your custom chatbot on any website
-                with just a few clicks. Simply download the extension, create a
-                chatbot, and start interacting with the website effortlessly..
+                you can store everything you’ve clipped from the web—whether you
+                need it just for a while or want to keep it forever. Choose
+                between temporary save (expires after 36 hours) or permanent
+                save (accessible whenever you need it). Your saved content is
+                automatically categorized into Temporary, Permanent, or All, so
+                you can easily find what you’re looking for with a single click.
               </p>
             </div>
             <div className="hidden h-fit items-center relative mt-4 md:flex">
@@ -22,7 +22,7 @@ const Features = () => {
               <div className="w-4 h-4 rounded-full absolute -right-[8px] bg-primary"></div>
             </div>
           </div>
-          <div className="flex-1 flex items-center pb-20 md:py-10">
+          <div className="flex-1 flex items-center mt-10 md:mt-0 pb-20 md:py-10">
             <div className="hidden h-fit items-center relative mt-4 md:flex">
               <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
               <div className="h-0.5 w-20 bg-primary"></div>
@@ -38,7 +38,7 @@ const Features = () => {
           </div>
         </div>
         <div className="flex flex-col-reverse md:flex-row">
-          <div className="flex-1 flex items-center  pb-20 border-subTitle md:border-r-2 border-r-0 md:pb-0">
+          <div className="flex-1 flex items-center mt-10 md:mt-0  pb-20 border-subTitle md:border-r-2 border-r-0 md:pb-0">
             <div className="mx-auto md:py-10">
               <img
                 src={"/assests/domain.png"}
@@ -57,7 +57,7 @@ const Features = () => {
               <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
               <div className="h-0.5 w-20 bg-primary"></div>
             </div>
-            <div className="w-3/4 md:w-full">
+            <div className="w-full md:w-full">
               <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
                 Organize Content by Website for Easy Access
               </h3>
@@ -69,7 +69,7 @@ const Features = () => {
         </div>
         <div className="flex flex-col md:flex-row">
           <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
-            <div className="w-3/4 md:w-full">
+            <div className="w-full md:w-full">
               <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
                 Group Your Saved Content for Any Domain and topic
               </h3>
@@ -86,7 +86,7 @@ const Features = () => {
               <div className="w-4 h-4 rounded-full absolute -right-[8px] bg-primary"></div>
             </div>
           </div>
-          <div className="flex-1 flex items-center pb-10 md:py-10">
+          <div className="flex-1 flex items-center mt-10 md:mt-0 pb-10 md:py-10">
             <div className="hidden h-fit items-center relative mt-4 md:flex">
               <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
               <div className="h-0.5 w-20 bg-primary"></div>

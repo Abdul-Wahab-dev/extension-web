@@ -1,5 +1,3 @@
-"use client";
-import React, { useEffect } from "react";
 import Faqs from "@/components/home/faqs";
 import Features from "@/components/home/features";
 import Footer from "@/components/layout/Footer";
@@ -7,17 +5,17 @@ import Future from "@/components/home/future";
 import Hero from "@/components/home/hero";
 import Navbar from "@/components/layout/Navbar";
 import Pricing from "@/components/home/pricing";
+import { auth } from "@/lib/helper/auth";
+import Extension from "@/components/extension";
 export default function Home() {
-  useEffect(() => {
-    (async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/test`
-      );
-      if (res.ok) {
-        console.log(res);
-      }
-    })();
-  }, []);
+  let tempToken = "";
+  let user = null;
+  if (auth.isAuthenticated()) {
+    const { token, decoded } = auth.verifyToken();
+    user = decoded;
+    tempToken = token;
+  }
+
   return (
     <main>
       <Navbar />
@@ -28,6 +26,7 @@ export default function Home() {
       <Pricing />
       <Faqs />
       <Footer />
+      <Extension token={tempToken} />
     </main>
   );
 }

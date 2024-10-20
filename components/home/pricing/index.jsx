@@ -1,5 +1,6 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import tick from "@/assets/tick.svg";
+
 import Image from "next/image";
 import { getProducts } from "@/lib/services/product";
 import {
@@ -124,7 +125,7 @@ const Pricing = () => {
                 return (
                   <div
                     key={index}
-                    className="w-[280px] h-[340px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
+                    className="w-[300px] relative h-[370px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
                   >
                     <p className="flex flex-col text-[#454647] text-xl sm:text-lg">
                       {product.name}
@@ -137,6 +138,47 @@ const Pricing = () => {
                         </strong>
                       )}
                     </h3>
+                    <ul>
+                      <li className="flex items-start justify-start gap-3">
+                        <Image
+                          src="/assests/icons/check.png"
+                          alt="tick"
+                          width="15"
+                          height="15"
+                          className="mt-[7px]"
+                        />
+                        <span>
+                          You can save upto {product.metadata.contentLimit || 0}{" "}
+                          contents
+                        </span>
+                      </li>
+                      <li className="flex items-start justify-start gap-3">
+                        <Image
+                          src="/assests/icons/check.png"
+                          alt="tick"
+                          width="15"
+                          height="15"
+                          className="mt-[7px]"
+                        />
+                        <span>
+                          You can create upto{" "}
+                          {product.metadata.collectionLimit || 0} collections
+                        </span>
+                      </li>
+                      <li className="flex items-start justify-start gap-3">
+                        <Image
+                          src="/assests/icons/check.png"
+                          alt="tick"
+                          width="15"
+                          height="15"
+                          className="mt-[7px]"
+                        />
+                        <span>
+                          You can share with upto{" "}
+                          {product.metadata.shareWith || 0} people
+                        </span>
+                      </li>
+                    </ul>
                     <div className="flex items-center justify-center w-full">
                       {userPackage && userPackage.status === "active" ? (
                         <button
@@ -171,7 +213,7 @@ const Pricing = () => {
                       ) : (
                         <button
                           onClick={() => handleSubscribe(product.price.id)}
-                          className="text-[#454647] sub-btn hover:bg-[#454647] text-lg hover:text-white transition-all flex items-center justify-center gap-3 px-5 py-1  border border-[#454647] rounded-lg"
+                          className="text-[#454647] absolute bottom-7 sub-btn hover:bg-[#454647] text-lg hover:text-white transition-all flex items-center justify-center gap-3 px-5 py-1  border border-[#454647] rounded-lg"
                         >
                           <span>Subscribe</span>
                           {selectedPriceId === product.price.id ? (

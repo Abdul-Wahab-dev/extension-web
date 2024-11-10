@@ -101,6 +101,73 @@ const Features = () => {
             </div>
           </div>
         </div>
+        <div className="flex flex-col-reverse md:flex-row">
+          <div className="flex-1 flex items-center mt-10 md:mt-0  pb-20 border-subTitle md:border-r-2 border-r-0 md:pb-0">
+            <div className="mx-auto md:py-10">
+              <img
+                src={"/assests/note.png"}
+                width={300}
+                height={100}
+                className="shadow-lg border"
+              />
+            </div>
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="h-0.5 w-20 bg-primary"></div>
+              <div className="w-4 h-4 rounded-full absolute -right-[8px] bg-primary"></div>
+            </div>
+          </div>
+          <div className="flex flex-1 items-start justify-between relative">
+            <div className="relative mt-4 hidden items-center md:flex">
+              <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
+              <div className="h-0.5 w-20 bg-primary"></div>
+            </div>
+            <div className="w-full md:w-full">
+              <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
+                Capture, Customize, and Share Notes for Every Web Page
+              </h3>
+              <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
+                Add personalized notes to web pages to help you remember
+                details, clarify ideas, or express your understanding in your
+                own words. Each note can be saved with a title and description,
+                and shared with others—making it easy to collaborate or revisit
+                your insights at any time
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row">
+          <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
+            <div className="w-full md:w-full">
+              <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
+                Share Your Saved Content, Notes and Collections with Ease
+              </h3>
+              <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
+                "Effortlessly share your saved content, notes and collections
+                with others. Whether collaborating on a project or sharing
+                inspiration, Flexisaves allows you to send individual content
+                pieces or entire collections directly to other users.
+              </p>
+            </div>
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="h-0.5 w-20 bg-primary"></div>
+              <div className="w-4 h-4 rounded-full absolute -right-[8px] bg-primary"></div>
+            </div>
+          </div>
+          <div className="flex-1 flex items-center mt-10 md:mt-0 pb-10 md:py-10">
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
+              <div className="h-0.5 w-20 bg-primary"></div>
+            </div>
+            <div className="mx-auto">
+              <img
+                src={"/assests/share.png"}
+                width={300}
+                height={100}
+                className="shadow-lg border"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

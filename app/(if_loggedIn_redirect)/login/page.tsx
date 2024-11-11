@@ -53,7 +53,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cultured">
+    <div className="min-h-screen relative flex items-center justify-center bg-cultured">
       <div className="bg-white p-10 rounded-lg shadow-xl w-96">
         {errors && errors.message && (
           <div className="border border-red-300 rounded-lg  bg-red-50 dark:text-red-400 p-2 text-red-800 mb-2">
@@ -125,6 +125,9 @@ const Login = () => {
             <span>continue with Google</span>
           </button>
         </div>
+      </div>
+      <div className="container mx-auto flex items-center absolute bottom-2 justify-center text-gray-800">
+        <p>FLEXISAVES © 2023. All Rights Reserved.</p>
       </div>
     </div>
   );

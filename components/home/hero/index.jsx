@@ -12,21 +12,19 @@ const Hero = () => {
         <div className="flex flex-col mb-20  gap-10 md:gap-0 md:flex-row md:mb-0">
           <div className="flex flex-col m-auto flex-1  p-2 md:p-8">
             <h1 className="text-3xl text-[#454647] z-40 font-normal mb-4 sm:text-5xl">
-              Save Content
+              Save, Share and{" "}
               <strong className="text-primary font-normal">
                 {" "}
-                Effortlessly
+                Access Content
               </strong>{" "}
+              Effortlessly
               <br />
-              and <strong className="text-primary font-normal">
-                Access
-              </strong>{" "}
-              it Anytime, Anywhere!
+              Anywhere, Anytime!
             </h1>
             <p className="text-[#454647] text-xl z-40 mb-12 sm:text-lg">
-              Flexisaves lets you instantly save and manage web content. Keep
-              your research, articles, and inspiration at your fingertips with
-              just few clicks.
+              Flexisaves lets you instantly save, share, and manage web content.
+              Keep your research, articles, and inspiration organized and
+              accessible, ready to share with others in just a few clicks
             </p>
             <Link
               href="https://chromewebstore.google.com/detail/flexisaves/mmaidogdkpmcnbjepbfhicpecemdeiij"

@@ -11,7 +11,7 @@ const Future = () => {
         <div className="flex flex-col bg-white text-center items-center md:p-8 z-50">
           <h2 className="text-[#454647] text-3xl font-normal mb-5 sm:text-4xl">
             Download to Save and Manage <br />
-            Web Content Seamlessly
+            Content Seamlessly
           </h2>
           <Link
             href="https://chromewebstore.google.com/detail/flexisaves/mmaidogdkpmcnbjepbfhicpecemdeiij?hl=en"

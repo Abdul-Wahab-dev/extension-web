@@ -37,20 +37,23 @@ const Hero = () => {
                   width={24}
                   height={24}
                   className="mr-2 shadow-md rounded-full"
+                  alt="chrome-icon"
                 />
                 Download free extension
               </button>
             </Link>
           </div>
-          <div className="flex-1 m-auto z-40">
-            <img
+          <div className="flex-1 m-auto z-40 flex justify-center items-center">
+            <amp-img
               className="mx-auto md:mt-6"
-              width={320}
-              height={100}
-              src={"/assests/home.png"}
+              width={298}
+              height={403}
+              src={"/assests/home.webp"}
               style={{
                 boxShadow: "15px 15px 100px 0px #CEE4FC",
               }}
+              alt="home page"
+              loading="lazy"
             />
           </div>
         </div>

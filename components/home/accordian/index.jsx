@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import plus from "@/assets/common/plus.svg";
 import minus from "@/assets/common/minus.svg";
-import Image from "next/image";
 
 const Accordian = ({ focused, handleFocus, faq }) => {
   const answerRef = useRef(null);
@@ -11,7 +10,7 @@ const Accordian = ({ focused, handleFocus, faq }) => {
         onClick={handleFocus}
         className="flex border-b cursor-pointer border-[#454647] w-full pb-2 text-xl sm:text-lg"
       >
-        <Image
+        <amp-img
           width={16}
           height={16}
           src={!focused ? plus : minus}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import FramerDiv from "@/components/framermotion/divblock";
+
 const Footer = () => {
   return (
     <div>
@@ -10,10 +10,10 @@ const Footer = () => {
             <div className="flex justify-between text-slate-800 flex-col items-center gap-10">
               <div className="w-[100%] flex flex-col items-center justify-center gap-5">
                 <Link href="/">
-                  <Image
+                  <amp-img
                     src="/assests/icons/footer-logo.svg"
-                    width={160}
-                    height={100}
+                    width={170}
+                    height={89}
                     alt="logo"
                   />
                 </Link>
@@ -29,10 +29,10 @@ const Footer = () => {
                     className="flex gap-3 items-center "
                   >
                     <div className="w-[40px] h-[40px] bg-white flex items-center justify-center shadow-lg rounded-md">
-                      <Image
+                      <amp-img
                         src={"/assests/icons/email.png"}
                         width={23}
-                        height={60}
+                        height={23}
                         alt="ai-icon"
                       />
                     </div>
@@ -58,10 +58,10 @@ const Footer = () => {
                 </li> */}
                 <li className="flex gap-3 items-center">
                   <div className="w-[40px] h-[40px] bg-white flex items-center justify-center shadow-lg rounded-md border-gray-400">
-                    <Image
+                    <amp-img
                       src={"/assests/icons/location.png"}
                       width={23}
-                      height={60}
+                      height={23}
                       alt="ai-icon"
                     />
                   </div>

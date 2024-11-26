@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth } from "@/lib/helper/auth";
 import Extension from "@/components/extension";
+import Script from "next/script";
 import AuthUser from "@/components/auth/AuthUser";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <Script async src="https://cdn.ampproject.org/v0.js"></Script>
       <body className={inter.className}>
         <AuthUser user={user}>{children}</AuthUser>
         <ToastContainer />

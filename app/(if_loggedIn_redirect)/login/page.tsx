@@ -22,13 +22,12 @@ const Login = () => {
       const token = await loginWithemailAndPasswrd(email, password);
       if (token) {
         if (typeof chrome !== "undefined" && chrome.runtime) {
-          chrome.runtime.sendMessage(
-            "mmaidogdkpmcnbjepbfhicpecemdeiij",
-            { name: "USER_AUTHENTICATION", token: token || "" },
-            (response) => {
-              console.log("Response:", response);
-            }
-          );
+          if (window) {
+            window.postMessage(
+              { type: "USER_AUTHENTICATION", token: token || "" },
+              "*"
+            );
+          }
         }
         router.replace("/");
       }

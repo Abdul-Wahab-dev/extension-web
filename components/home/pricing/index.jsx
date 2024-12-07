@@ -113,10 +113,10 @@ const Pricing = () => {
           </p>
           <div className="flex gap-6 flex-wrap self-center justify-center">
             {loading
-              ? [1, 2, 3, 4].map((el) => (
+              ? [1, 2, 3].map((el) => (
                   <div
                     key={el}
-                    className="w-[280px] h-[340px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
+                    className="w-[300px] h-[420px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
                   ></div>
                 ))
               : null}
@@ -125,7 +125,7 @@ const Pricing = () => {
                 return (
                   <div
                     key={index}
-                    className="w-[300px] relative h-[370px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
+                    className="w-[300px] relative h-[420px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
                   >
                     <p className="flex flex-col text-[#454647] text-xl sm:text-lg">
                       {product.name}
@@ -149,7 +149,20 @@ const Pricing = () => {
                         />
                         <span>
                           You can save upto {product.metadata.contentLimit || 0}{" "}
-                          contents
+                          copies
+                        </span>
+                      </li>
+                      <li className="flex items-start justify-start gap-3">
+                        <Image
+                          src="/assests/icons/check.png"
+                          alt="tick"
+                          width="15"
+                          height="15"
+                          className="mt-[7px]"
+                        />
+                        <span>
+                          You can save upto {product.metadata.noteLimit || 0}{" "}
+                          notes
                         </span>
                       </li>
                       <li className="flex items-start justify-start gap-3">

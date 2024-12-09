@@ -42,20 +42,6 @@ const Footer = () => {
                     </div>
                   </a>
                 </li>
-                {/* <li className="flex gap-3 items-center">
-                  <div className="w-[40px] h-[40px] bg-white flex items-center justify-center shadow-lg rounded-md">
-                    <Image
-                      src={"/assests/icons/telephone.png"}
-                      width={20}
-                      height={60}
-                      alt="ai-icon"
-                    />
-                  </div>
-                  <div className="text-slate-800 leading-tight">
-                    <p className="font-semibold text-sm">Phone</p>
-                    <p className="text-sm">+923096171080</p>
-                  </div>
-                </li> */}
                 <li className="flex gap-3 items-center">
                   <div className="w-[40px] h-[40px] bg-white flex items-center justify-center shadow-lg rounded-md border-gray-400">
                     <Image
@@ -67,10 +53,24 @@ const Footer = () => {
                   </div>
                   <div className="text-slate-800 leading-tight">
                     <p className="font-semibold text-sm">Address</p>
-                    <p className="text-sm">Lahore , Pakistan</p>
+                    <p className="text-sm">Australia</p>
                   </div>
                 </li>
               </ul>
+              <div className="flex items-center justify-center gap-10">
+                <Link
+                  href="/privacy-policy"
+                  className="cursor-pointer text-[#454647] hover:text-primary transition-all h-full text-lg  flex items-center justify-center inner-scroll"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  href="/contact"
+                  className="cursor-pointer text-[#454647] hover:text-primary transition-all h-full text-lg  flex items-center justify-center inner-scroll"
+                >
+                  Contact us
+                </Link>
+              </div>
             </div>
           </div>
         </div>

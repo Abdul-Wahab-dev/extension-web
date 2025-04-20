@@ -10,19 +10,17 @@ const Footer = () => {
             <div className="flex justify-between text-slate-800 flex-col items-center gap-10">
               <div className="w-[100%] flex flex-col items-center justify-center gap-5">
                 <Link href="/">
-                  <Image
-                    src="/assests/icons/footer-logo.svg"
-                    width={160}
-                    height={100}
-                    alt="logo"
-                  />
+                  <h2 className="text-3xl font-bold">
+                    <span className="text-primary">Jalandher</span>
+                    Sizing
+                  </h2>
                 </Link>
                 <p className="text-center mt-3 text-lg">
-                  Save Content Effortlessly, Organize with Precision
+                  Our Reputation Is Built On Solid Ground
                 </p>
               </div>
 
-              <ul className="flex  flex-row gap-4 p-4">
+              <ul className="flex flex-col sm:flex-row gap-4 sm:p-4">
                 <li>
                   <a
                     href="mailto:abdulwahabdev0@gmail.com"
@@ -45,7 +43,7 @@ const Footer = () => {
                 <li className="flex gap-3 items-center">
                   <div className="w-[40px] h-[40px] bg-white flex items-center justify-center shadow-lg rounded-md border-gray-400">
                     <Image
-                      src={"/assests/icons/location.png"}
+                      src={"/assests/icons/location-black.png"}
                       width={23}
                       height={60}
                       alt="ai-icon"
@@ -53,31 +51,17 @@ const Footer = () => {
                   </div>
                   <div className="text-slate-800 leading-tight">
                     <p className="font-semibold text-sm">Address</p>
-                    <p className="text-sm">Australia</p>
+                    <p className="text-sm">Faisalabad,Pakistan</p>
                   </div>
                 </li>
               </ul>
-              <div className="flex items-center justify-center gap-10">
-                <Link
-                  href="/privacy-policy"
-                  className="cursor-pointer text-[#454647] hover:text-primary transition-all h-full text-lg  flex items-center justify-center inner-scroll"
-                >
-                  Privacy Policy
-                </Link>
-                <Link
-                  href="/contact"
-                  className="cursor-pointer text-[#454647] hover:text-primary transition-all h-full text-lg  flex items-center justify-center inner-scroll"
-                >
-                  Contact us
-                </Link>
-              </div>
             </div>
           </div>
         </div>
       </div>
       <div className="bg-[#f9f9f9] p-5">
         <div className="custom_container mx-auto flex items-center justify-center text-gray-800">
-          <p>FLEXISAVES © 2023. All Rights Reserved.</p>
+          <p>JalandherSizing © 2020. All Rights Reserved.</p>
         </div>
       </div>
     </div>

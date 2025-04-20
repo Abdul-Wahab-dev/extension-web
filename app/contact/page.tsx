@@ -2,31 +2,14 @@
 import React, { useState } from "react";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import { handleContact } from "@/lib/services/product";
+
 import { toast } from "react-toastify";
 const Contact = () => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState("");
   const [detail, setDetail] = useState("");
   const [loading, setLoading] = useState(false);
-  const handleSubmit = async () => {
-    setLoading(true);
-    try {
-      if (!email || !detail || !subject) {
-        toast.error("Fields require");
-        return;
-      }
-      const res = await handleContact(email, subject, detail);
-      toast.success("Your request is submitted!");
-      setEmail("");
-      setDetail("");
-      setSubject("");
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      toast.error("Failed to process your request");
-    }
-  };
+
   return (
     <div>
       <Navbar />
@@ -38,8 +21,7 @@ const Contact = () => {
                 Contact Us
               </h2>
               <p className="mb-8 lg:mb-16 font-light text-center text-gray-500  sm:text-xl">
-                Got a technical issue? Want to send feedback about a beta
-                feature? Need details about our Business plan? Let us know.
+                Need details about our Business plan? Let us know.
               </p>
               <form action="#" className="space-y-8">
                 <div>
@@ -94,7 +76,6 @@ const Contact = () => {
                 </div>
                 <button
                   type="button"
-                  onClick={handleSubmit}
                   className="px-6 py-3 bg-primary font-medium text-white w-fit rounded-md flex items-center justify-center gap-2"
                 >
                   <span>Send message</span>

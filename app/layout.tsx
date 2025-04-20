@@ -7,8 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jalandher sizing",
-  description: "Jalandher sizing",
+  title: "Jalandhar sizing",
+  description: "Jalandhar sizing",
 };
 
 export default function RootLayout({

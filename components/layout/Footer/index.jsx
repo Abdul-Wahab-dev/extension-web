@@ -36,7 +36,7 @@ const Footer = () => {
                     </div>
                     <div className="text-slate-800 leading-tight">
                       <p className="font-semibold text-sm">Email</p>
-                      <p className="text-sm">abdulwahabdev0@gmail.com</p>
+                      <p className="text-sm">support@Jalandharsizing.com</p>
                     </div>
                   </a>
                 </li>

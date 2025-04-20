@@ -30,7 +30,7 @@ const Help = () => {
               </div>
               <div className="text-slate-800 leading-tight">
                 <p className="font-semibold text-lg">Phone</p>
-                <p className="text-lg">+92300669320</p>
+                <p className="text-lg">+923006693020</p>
               </div>
             </div>
             <div className="flex gap-3 items-center ">

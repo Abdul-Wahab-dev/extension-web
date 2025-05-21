@@ -119,7 +119,7 @@ const Header = () => {
             {/* Sidebar */}
             {sideBarOpen && (
               <div
-                className="fixed inset-0 bg-black opacity-50 z-40 transition-opacity duration-300 ease-in-out"
+                className="fixed inset-0 bg-black opacity-50 z-50 transition-opacity duration-300 ease-in-out"
                 onClick={toggleSidebar}
               ></div>
             )}
@@ -130,28 +130,28 @@ const Header = () => {
                 }`}
                 ref={sidebarRef}
               >
-                <div className=" relative">
-                  {/* Close Button */}
-                  <button
-                    onClick={toggleSidebar}
-                    className="text-gray-700 absolute top-5 right-5 hover:text-gray-900 focus:outline-none"
+                <button
+                  onClick={toggleSidebar}
+                  className="text-gray-700 absolute top-4 right-4 hover:text-gray-900 focus:outline-none"
+                >
+                  <svg
+                    className="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
                   >
-                    <svg
-                      className="h-6 w-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+                <div className=" mt-10 relative">
+                  {/* Close Button */}
 
                   {/* User Info */}
                   {auth.isAuthenticated ? (
@@ -184,14 +184,14 @@ const Header = () => {
                         Features
                       </a>
                     ) : null}
-                    {pathname === "/" ? (
+                    {/* {pathname === "/" ? (
                       <a
                         href="#pricing"
                         className="w-full border-b  justify-start gap-3 flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       >
                         Pricing
                       </a>
-                    ) : null}
+                    ) : null} */}
                     {pathname === "/" ? (
                       <a
                         href="#download"
@@ -242,14 +242,14 @@ const Header = () => {
                 Features
               </a>
             ) : null}
-            {pathname === "/" ? (
+            {/* {pathname === "/" ? (
               <a
                 href="#pricing"
                 className="cursor-pointer text-[#454647] hover:text-primary transition-all h-full text-lg  flex items-center justify-center inner-scroll"
               >
                 Pricing
               </a>
-            ) : null}
+            ) : null} */}
             {pathname === "/" ? (
               <a
                 href="#download"

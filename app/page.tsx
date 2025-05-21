@@ -23,7 +23,7 @@ export default function Home() {
       {/* <Intro /> */}
       <Features />
       <Future />
-      <Pricing />
+      {/* <Pricing /> */}
       <Faqs />
       <Footer />
       <Extension token={tempToken} />

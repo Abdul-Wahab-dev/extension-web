@@ -211,14 +211,6 @@ const Header = () => {
                     {auth.isAuthenticated ? (
                       <>
                         <button
-                          onClick={handleBillingPortal}
-                          className="w-full border-b  justify-start gap-3 flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          {/* Manage Subscription Icon */}
-                          <span>Manage Subscription</span>
-                        </button>
-
-                        <button
                           onClick={handleLogout}
                           className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 mt-2"
                         >
@@ -226,7 +218,14 @@ const Header = () => {
                           Sign Out
                         </button>
                       </>
-                    ) : null}
+                    ) : (
+                      <Link
+                        href={"/login"}
+                        className="w-full border-b  justify-start gap-3 flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Login
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -319,16 +318,6 @@ const Header = () => {
                         </div> */}
                       </div>
 
-                      <button
-                        className="w-full flex items-center justify-start gap-3 text-left px-4 py-3 border-b text-sm text-gray-700 hover:bg-gray-100"
-                        role="menuitem"
-                        onClick={handleBillingPortal}
-                      >
-                        <span>Manage Subscription</span>
-                        {loading ? (
-                          <div className="spinner !border-t-black"></div>
-                        ) : null}
-                      </button>
                       <button
                         className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"

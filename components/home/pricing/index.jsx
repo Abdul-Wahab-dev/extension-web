@@ -1,252 +1,119 @@
-"use client";
-import React, { useEffect, useState } from "react";
-
-import Image from "next/image";
-import { getProducts } from "@/lib/services/product";
-import {
-  createSubscription,
-  updateSubscription,
-} from "@/lib/services//subscription";
-import { getCurrentUser } from "@/lib/services/authentication";
-import { useAuthentication } from "@/store/auth";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
-const Pricing = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [selectedPriceId, setSelectedPriceId] = useState("");
-  const [userPackage, setUserPackage] = useState(null);
-  const router = useRouter();
-  const auth = useAuthentication((state) => state);
-  useEffect(() => {
-    (async () => {
-      await fetchProducts();
-    })();
-  }, []);
-  useEffect(() => {
-    if (auth.isAuthenticated)
-      (async () => {
-        await fetchCurrentUser();
-      })();
-  }, [auth.isAuthenticated]);
-  const fetchCurrentUser = async () => {
-    if (!auth.isAuthenticated) return;
-    const res = await getCurrentUser();
-    if (res) {
-      auth.setCurrentUser(res.user);
-      if (res.user && res.user.package) {
-        setUserPackage(res.user.package);
-      }
-    }
-  };
-  const fetchProducts = async () => {
-    setLoading(true);
-    try {
-      const res = await getProducts();
-      if (res) setProducts([...res.products]);
-      setLoading(false);
-    } catch (error) {
-      const message = error.message || "Failed to process your request";
-      toast.error(message);
-    }
-  };
-
-  const handleSubscribe = async (priceId) => {
-    if (!auth.isAuthenticated) {
-      router.push("/login");
-    }
-    if (!priceId) return;
-
-    setSelectedPriceId(priceId);
-    try {
-      const res = await createSubscription(priceId);
-      if (res) {
-        const { session } = res;
-        if (session) {
-          const a = document.createElement("a");
-          a.href = session.url;
-          a.target = "_self";
-          a.click();
-        }
-        setSelectedPriceId("");
-      }
-    } catch (error) {
-      const message = error.message || "Failed to process your request";
-      toast.error(message);
-      setSelectedPriceId("");
-    }
-  };
-  const updateSubscribe = async (priceId) => {
-    if (!auth.isAuthenticated) {
-      router.push("/login");
-    }
-    if (!priceId) return;
-
-    setSelectedPriceId(priceId);
-    try {
-      const res = await updateSubscription(priceId);
-      if (res) {
-        setTimeout(() => {
-          (async () => {
-            await fetchCurrentUser();
-            setSelectedPriceId("");
-            toast.success("Your subscription is successfully updated");
-          })();
-        }, 2000);
-      }
-    } catch (error) {
-      const message = error.message || "Failed to process your request";
-      toast.error(message);
-      setSelectedPriceId("");
-    }
-  };
-
+const Services = () => {
   return (
-    <section className="bg-[#f9f9f9] md:p-20 p-10" id="pricing">
+    <section className="md:p-20 px-1 py-8  bg-[#f9f9f9] " id="services">
       <div className="custom_container mx-auto">
-        <div className=" items-start flex flex-col">
-          <h3 className="text-4xl mb-4 sm:text-3xl text-[#454647]">
-            Plans & pricing
-          </h3>
-          <p className="text-subTitle mb-12 text-xl sm:text-lg text-[#454647]">
-            Choose the plan that suits your needs, cancel anytime.
-          </p>
-          <div className="flex gap-6 flex-wrap self-center justify-center">
-            {loading
-              ? [1, 2, 3].map((el) => (
-                  <div
-                    key={el}
-                    className="w-[300px] h-[420px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
-                  ></div>
-                ))
-              : null}
-            {!loading &&
-              products.map((product, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="w-[300px] relative h-[420px] hover:scale-105 transition-transform p-6 flex flex-col items-start gap-6 bg-white rounded shadow-lg"
-                  >
-                    <p className="flex flex-col text-[#454647] text-xl sm:text-lg">
-                      {product.name}
-                    </p>
-                    <h3 className="text-5xl text-[#454647] font-normal sm:text-4xl">
-                      {product.price.actualPrice}
-                      {product.price !== "Free" && (
-                        <strong className="font-normal text-subTitle text-2xl sm:text-xl">
-                          /month
-                        </strong>
-                      )}
-                    </h3>
-                    <ul>
-                      <li className="flex items-start justify-start gap-3">
-                        <Image
-                          src="/assests/icons/check.png"
-                          alt="tick"
-                          width="15"
-                          height="15"
-                          className="mt-[7px]"
-                        />
-                        <span>
-                          You can save upto {product.metadata.contentLimit || 0}{" "}
-                          copies
-                        </span>
-                      </li>
-                      <li className="flex items-start justify-start gap-3">
-                        <Image
-                          src="/assests/icons/check.png"
-                          alt="tick"
-                          width="15"
-                          height="15"
-                          className="mt-[7px]"
-                        />
-                        <span>
-                          You can save upto {product.metadata.noteLimit || 0}{" "}
-                          notes
-                        </span>
-                      </li>
-                      <li className="flex items-start justify-start gap-3">
-                        <Image
-                          src="/assests/icons/check.png"
-                          alt="tick"
-                          width="15"
-                          height="15"
-                          className="mt-[7px]"
-                        />
-                        <span>
-                          You can create upto{" "}
-                          {product.metadata.collectionLimit || 0} collections
-                        </span>
-                      </li>
-                      <li className="flex items-start justify-start gap-3">
-                        <Image
-                          src="/assests/icons/check.png"
-                          alt="tick"
-                          width="15"
-                          height="15"
-                          className="mt-[7px]"
-                        />
-                        <span>
-                          You can share with upto{" "}
-                          {product.metadata.shareWith || 0} people
-                        </span>
-                      </li>
-                    </ul>
-                    <div className="flex items-center justify-center w-full">
-                      {userPackage && userPackage.status === "active" ? (
-                        <button
-                          onClick={() => updateSubscribe(product.price.id)}
-                          className={` sub-btn text-lg  transition-all flex items-center justify-center gap-3 px-5 py-1  border border-[#454647] rounded-lg
-                          ${
-                            userPackage.status === "active" &&
-                            userPackage.planId === product.price.id
-                              ? "bg-[#454647] text-lg text-white"
-                              : "bg-white  text-[#454647] hover:text-white hover:bg-[#454647] "
-                          }}
-                            `}
-                          disabled={
-                            userPackage &&
-                            userPackage.status === "active" &&
-                            userPackage.planId === product.price.id
-                              ? true
-                              : false
-                          }
-                        >
-                          {userPackage.status === "active" &&
-                          userPackage.planId === product.price.id ? (
-                            <span className="text-white">Subscribed</span>
-                          ) : (
-                            <span>Update</span>
-                          )}
-
-                          {selectedPriceId === product.price.id ? (
-                            <div className="spinner"></div>
-                          ) : null}
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => handleSubscribe(product.price.id)}
-                          className="text-[#454647] absolute bottom-7 sub-btn hover:bg-[#454647] text-lg hover:text-white transition-all flex items-center justify-center gap-3 px-5 py-1  border border-[#454647] rounded-lg"
-                        >
-                          <span>Subscribe</span>
-                          {selectedPriceId === product.price.id ? (
-                            <div className="spinner"></div>
-                          ) : null}
-                        </button>
-                      )}
-                    </div>
-                    <div className="flex flex-col items-start text-[#454647]">
-                      {/* {product.features.map((feature, index) => (
-                      <div key={index} className="flex items-start gap-2">
-                        <Image className="mt-2" width={16} src={tick} />
-                        <p>{feature}</p>
-                      </div>
-                    ))} */}
-                      {/* <p className="text-subTitle ml-6">{product.chatCount}</p> */}
-                    </div>
-                  </div>
-                );
-              })}
+        <div className="w-full flex-col flex justify-center items-center mb-5">
+          <p className="text-primary">OUR SERVICES</p>
+          <h2 className="text-black text-3xl font-normal mb-5 sm:text-4xl">
+            How to get Textile?
+          </h2>
+        </div>
+        <div className="flex flex-col md:flex-row">
+          <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
+            <div className="w-full md:w-full">
+              <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
+                Yarn Procurement
+              </h3>
+              <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
+                The yarn is procured from top Spinning Mills producing high
+                quality yarn made from superior cotton.
+              </p>
+            </div>
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="h-0.5 w-20 bg-primary"></div>
+              <div className="w-4 h-4 rounded-full absolute -right-[8px] bg-primary"></div>
+            </div>
+          </div>
+          <div className="flex-1 flex items-center mt-10 md:mt-0 pb-20 md:py-10">
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
+              <div className="h-0.5 w-20 bg-primary"></div>
+            </div>
+            <div className="mx-auto">
+              <div className="w-[250px] sm:w-[400px] h-[250px] bg-[url(/assests/images/procurement.webp)] bg-cover"></div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col-reverse md:flex-row">
+          <div className="flex-1 flex items-center mt-10 md:mt-0  pb-20 border-subTitle md:border-r-2 border-r-0 md:pb-0">
+            <div className="mx-auto md:py-10">
+              <div className="w-[250px] sm:w-[400px] h-[250px] bg-[url(/assests/images/wet.jpeg)] bg-cover"></div>
+            </div>
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="h-0.5 w-20 bg-primary"></div>
+              <div className="w-4 h-4 rounded-full absolute -right-[8px] bg-primary"></div>
+            </div>
+          </div>
+          <div className="flex flex-1 items-start justify-between relative">
+            <div className="relative mt-4 hidden items-center md:flex">
+              <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
+              <div className="h-0.5 w-20 bg-primary"></div>
+            </div>
+            <div className="w-full md:w-full">
+              <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
+                Wet Processing
+              </h3>
+              <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
+                The greige towels fabric is processed chemically to obtain
+                aesthetic properties in terms of softness, water absorbency,
+                whiteness, etc. If needed, the fabric is then dyed by adding the
+                colors/dyes.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row">
+          <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
+            <div className="w-full md:w-full">
+              <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
+                Weaving
+              </h3>
+              <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
+                Our latest Airjet looms use a jet of air to propel the weft yarn
+                through the warp shed to form top quality greige towels fabric.
+              </p>
+            </div>
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="h-0.5 w-20 bg-primary"></div>
+              <div className="w-4 h-4 rounded-full absolute -right-[8px] bg-primary"></div>
+            </div>
+          </div>
+          <div className="flex-1 flex items-center mt-10 md:mt-0 pb-10 md:py-10">
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
+              <div className="h-0.5 w-20 bg-primary"></div>
+            </div>
+            <div className="mx-auto">
+              <div className="w-[250px] sm:w-[400px] h-[250px] bg-[url(/assests/images/weaving.jpg)] bg-cover"></div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col-reverse md:flex-row">
+          <div className="flex-1 flex items-center mt-10 md:mt-0  pb-20 border-subTitle md:border-r-2 border-r-0 md:pb-0">
+            <div className="mx-auto md:py-10">
+              <div className="w-[250px] sm:w-[400px] h-[250px] bg-[url(/assests/images/sizing.jpg)] bg-cover"></div>
+            </div>
+            <div className="hidden h-fit items-center relative mt-4 md:flex">
+              <div className="h-0.5 w-20 bg-primary"></div>
+              <div className="w-4 h-4 rounded-full absolute -right-[8px] bg-primary"></div>
+            </div>
+          </div>
+          <div className="flex flex-1 items-start justify-between relative">
+            <div className="relative mt-4 hidden items-center md:flex">
+              <div className="w-4 h-4 rounded-full absolute -left-[8px] bg-primary"></div>
+              <div className="h-0.5 w-20 bg-primary"></div>
+            </div>
+            <div className="w-full md:w-full">
+              <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
+                Warping & Sizing
+              </h3>
+              <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
+                The Yarn is combined from the creel of different cones to a
+                beam. It is then impregnated with particular substances that
+                form a film on the yarn’s surface to improve the yarn’s
+                smoothness and tenacity during the subsequent weaving stage.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -254,4 +121,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default Services;

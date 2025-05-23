@@ -1,33 +1,68 @@
-import Link from "next/link";
 import Image from "next/image";
-import chrome from "@/assets/common/chrome.svg";
+
 const Future = () => {
   return (
-    <section className="bg-white overflow-hidden py-16 relative" id="download">
-      <div className="w-[30px] h-[30px] bg-[#CEE4FC] rounded-full absolute top-5 shadow-lg left-[50%] -translate-x-[40%]"></div>
-      <div className="w-[150px] h-[150px] z-0 bg-transparent border-[#CEE4FC]  border-4 rounded-full absolute -bottom-[50px] -right-[50px]"></div>
-      <div className="w-[120px] h-[120px] bg-[#CEE4FC] rounded-full absolute top-[70%] z-0 -translate-y-[30%] left-[30%] -translate-x-[50%]"></div>
-      <div className="custom_container mx-auto">
-        <div className="flex flex-col bg-white text-center items-center md:p-8 z-50">
-          <h2 className="text-[#454647] text-3xl font-normal mb-5 sm:text-4xl">
-            Download to Save and Manage <br />
-            Content Seamlessly
-          </h2>
-          <Link
-            href="https://chromewebstore.google.com/detail/flexisaves/mmaidogdkpmcnbjepbfhicpecemdeiij?hl=en"
-            target="_blank"
-            className="z-50"
-          >
-            <button className="flex px-6 py-3 bg-primary font-medium text-white w-fit rounded-md sm:self-center hover:backdrop-brightness-50">
-              <Image
-                src={chrome}
-                width={24}
-                height={24}
-                className="mr-2 shadow-md rounded-full"
-              />
-              Download free extension
-            </button>
-          </Link>
+    <section
+      className="overflow-hidden relative bg-[url(/assests/images/factory.jpg)] bg-fixed"
+      id="testimonial"
+    >
+      <div className="w-full  bg-black bg-opacity-50">
+        <div className="custom_container mx-auto h-full py-10 md:py-16">
+          <div className="flex flex-col text-center justify-center h-full items-center    z-50 gap-14">
+            <div>
+              <p className="text-primary">OUR TESTIMONIAL</p>
+              <h2 className="text-white text-3xl font-normal mb-5 sm:text-4xl">
+                Quality is our first priority
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-3 items-center justify-center gap-20 w-full">
+              <div className="flex flex-col justify-center items-center gap-5">
+                <div className="p-5 border border-white rounded-lg">
+                  <Image
+                    src={"/assests/icons/client.png"}
+                    width={40}
+                    height={100}
+                    alt="trusted-client"
+                  />
+                </div>
+                <h3 className="text-2xl text-center text-white">
+                  <span className="text-4xl font-bold">100+</span>
+                  <br />
+                  Trusted Client
+                </h3>
+              </div>
+              <div className="flex flex-col justify-center items-center gap-5">
+                <div className="p-5 border border-white rounded-lg">
+                  <Image
+                    src={"/assests/icons/project.png"}
+                    width={40}
+                    height={100}
+                    alt="trusted-client"
+                  />
+                </div>
+                <h3 className="text-2xl text-center text-white">
+                  <span className="text-4xl font-bold">200+</span>
+                  <br />
+                  Projects completed
+                </h3>
+              </div>
+              <div className="flex flex-col justify-center items-center gap-5">
+                <div className="p-5 border border-white rounded-lg">
+                  <Image
+                    src={"/assests/icons/location.png"}
+                    width={40}
+                    height={100}
+                    alt="trusted-client"
+                  />
+                </div>
+                <h3 className="text-2xl text-center text-white">
+                  <span className="text-4xl font-bold">50+</span>
+                  <br />
+                  Visited Conference
+                </h3>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -6,15 +6,12 @@ const Features = () => {
           <div className="flex justify-between flex-1  border-subTitle md:border-r-2 border-r-0">
             <div className="w-full md:w-full">
               <h3 className="text-4xl text-primary font-normal mb-4 sm:text-3xl">
-                Save and Manage Your Content - Temporarily or Permanently
+                Save and Manage Your Content
               </h3>
               <p className="text-subTitle text-xl sm:text-lg text-[#454647]">
-                you can store everything you’ve clipped from the web—whether you
-                need it just for a while or want to keep it forever. Choose
-                between temporary save (expires after 36 hours) or permanent
-                save (accessible whenever you need it). Your saved content is
-                automatically categorized into Temporary, Permanent, or All, so
-                you can easily find what you’re looking for with a single click.
+                Select the text from any website, right click and save text by
+                click on the option &quot;Add to Flexisaves&quot;. You can
+                easily find what you’re looking for with a single click.
               </p>
             </div>
             <div className="hidden h-fit items-center relative mt-4 md:flex">

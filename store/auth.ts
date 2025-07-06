@@ -54,7 +54,7 @@ export const useAuthentication = create<AuthStoreType>((set) => ({
     try {
       set({ error: null });
       const authUser = await loginWithEmail(email, password);
-      console.log({ authUser });
+
       if (authUser && authUser.user) {
         set({ user: authUser.user, isAuthenticated: true });
         return authUser.token;

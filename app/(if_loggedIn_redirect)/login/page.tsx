@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthentication } from "@/store/auth";
 import { toast } from "react-toastify";
+import Link from "next/link";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -123,6 +124,12 @@ const Login = () => {
             </svg>
             <span>continue with Google</span>
           </button>
+          <h3>
+            Don't have an account?{" "}
+            <Link href="/signup" className="text-primary font-semibold">
+              Signup
+            </Link>
+          </h3>
         </div>
       </div>
       <div className="container mx-auto flex items-center absolute bottom-2 justify-center text-gray-800">

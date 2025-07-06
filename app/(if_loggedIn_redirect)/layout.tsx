@@ -8,8 +8,6 @@ export default function RootLayout({
   children: React.ReactNode;
   options: any;
 }>) {
-  headers().forEach((el) => console.log(el));
-
   if (auth.isAuthenticated()) {
     redirect("/");
   }

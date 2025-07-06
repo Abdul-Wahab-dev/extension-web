@@ -4,7 +4,9 @@ import Footer from "@/components/layout/Footer";
 import Future from "@/components/home/future";
 import Hero from "@/components/home/hero";
 import Navbar from "@/components/layout/Navbar";
-import Pricing from "@/components/home/pricing";
+// import Pricing from "@/components/home/pricing";
+import WorkingVideo from "@/components/home/workingVideo";
+
 import { auth } from "@/lib/helper/auth";
 import Extension from "@/components/extension";
 export default function Home() {
@@ -20,6 +22,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <WorkingVideo />
       {/* <Intro /> */}
       <Features />
       <Future />

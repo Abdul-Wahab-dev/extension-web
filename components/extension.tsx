@@ -4,9 +4,18 @@ type Props = {
   token: string;
 };
 const Extension: React.FC<Props> = ({ token }) => {
-   useEffect(() => {
+  useEffect(() => {
     if (token) {
       if (window) {
+        chrome.runtime.sendMessage(
+          process.env.NEXT_PUBLIC_EXTENSION_ID,
+          {
+            type: "USER_AUTHENTICATION",
+            token,
+          },
+          () => {}
+        );
+
         window.postMessage(
           { type: "USER_AUTHENTICATION", token: token || "" },
           "*"

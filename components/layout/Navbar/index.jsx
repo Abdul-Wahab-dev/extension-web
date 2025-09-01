@@ -184,6 +184,14 @@ const Header = () => {
                         Features
                       </a>
                     ) : null}
+                    {pathname === "/" ? (
+                      <a
+                        href="#use-case"
+                        className="w-full border-b  justify-start gap-3 flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Use Cases
+                      </a>
+                    ) : null}
 
                     {pathname === "/" ? (
                       <a
@@ -232,6 +240,14 @@ const Header = () => {
                 className="cursor-pointer text-[#454647] hover:text-primary transition-all h-full text-lg  flex items-center justify-center inner-scroll"
               >
                 Features
+              </a>
+            ) : null}
+            {pathname === "/" ? (
+              <a
+                href="#use-case"
+                className="cursor-pointer text-[#454647] hover:text-primary transition-all h-full text-lg  flex items-center justify-center inner-scroll"
+              >
+                Use Cases
               </a>
             ) : null}
 

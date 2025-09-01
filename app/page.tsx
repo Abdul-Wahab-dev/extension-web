@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import Future from "@/components/home/future";
 import Hero from "@/components/home/hero";
 import Navbar from "@/components/layout/Navbar";
+import UseCase from "@/components/home/useCase";
 // import Pricing from "@/components/home/pricing";
 import WorkingVideo from "@/components/home/workingVideo";
 
@@ -26,6 +27,7 @@ export default function Home() {
       {/* <Intro /> */}
       <Features />
       <Future />
+      <UseCase />
       <Faqs />
       <Footer />
       <Extension token={tempToken} />
